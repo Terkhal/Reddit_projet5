@@ -1,19 +1,23 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-let ID = ref([])
-const url = 'https://jsonplaceholder.typicode.com/comments?_limit=10'
+
+// get comments of all posts by post id:
+
+let postComment = ref([])
+const urlGetComments = 'https://jsonplaceholder.typicode.com/comments?_limit=10'
 
 onMounted(() => {
-    fetch(url)
+    fetch(urlGetComments)
         .then((response) => response.json())
         .then((data) => {
             let tmp = data.map(comments => comments.postId)
-            //   comments.value = data
+
+// group comments by post id:
             let result = {}
             tmp.forEach(function (x) { result[x] = (result[x] || 0) + 1; });
-            ID.value = result
-            console.log(ID)
+            postComment.value = result
+            console.log(postComment)
         })
         // eslint-disable-next-line no-unused-vars
         .catch((error) => {
@@ -22,14 +26,29 @@ onMounted(() => {
         })
 })
 
-console.log();
 
-Math.max(ID){
-    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
-    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
 
-}
-function topPost (ID)
+// get comments of all categories 
+
+
+let category = ref([])
+//adapter url
+const urlGetCateg = 'https://jsonplaceholder.typicode.com/comments?_limit=10'
+onMounted(() => {
+    fetch(urlGetCateg)
+        .then((response) => response.json())
+        .then((data) => {
+            category.value = data})
+            console.log(category)
+        })
+        // eslint-disable-next-line no-unused-vars
+        .catch((error) => {
+            console.log(error)
+            console.error('oulaaah erreur')
+        })
+
+
+// Math.max(ID)
 
 </script>
 
@@ -37,7 +56,7 @@ function topPost (ID)
     <div class="categ">
 
         <table class="topcat">
-            <p> test ci dessous</p>
+            <p> test ci-dessous</p>
             <div v-if="ID.value != undefined">
                 <div v-for="comment in comments.postId" :key="comment.postId">
                 </div>
@@ -47,7 +66,7 @@ function topPost (ID)
                 <th> &#128293; POPULAR </th>
             </tr>
             <tr>
-                <td> TOP VALUE {{ ID }} </td>
+                <td> {{ ID }} </td>
             </tr>
             <tr>
                 <td> categ 2 </td>

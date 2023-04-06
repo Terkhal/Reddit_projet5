@@ -1,6 +1,15 @@
 <script setup>
-import Comp_topCat from '../components/Comp_home_topCateg.vue';
 import Comp_home_postsLists from '../components/Comp_home_postsLists.vue';
+
+</script>
+
+<template>
+  
+    <Comp_home_postsLists/>
+
+</template>
+<script setup>
+import Comp_topCat from '../components/Comp_home_topCateg.vue';
 
 </script>
 
@@ -12,9 +21,6 @@ import Comp_home_postsLists from '../components/Comp_home_postsLists.vue';
 <div class="categ">
   <Comp_topCat/>
  </div>
-  
-    <Comp_home_postsLists/>
-
 </template>
 
 <style> 
