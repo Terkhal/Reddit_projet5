@@ -24,7 +24,9 @@ onMounted(() => {
 
 console.log();
 
-Math.max(1,2){
+Math.max(ID){
+    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
 
 }
 function topPost (ID)
