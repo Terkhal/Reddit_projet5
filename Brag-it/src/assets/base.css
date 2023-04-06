@@ -59,6 +59,33 @@ body {
     background-size:contain;
 }
 
+.logo-search {
+  background: url('/loupeblack.png')
+    no-repeat;
+    float: left;
+    width:  200px;
+    height: 100px;
+    background-size:contain;
+}
+ 
+[class='dark-theme'] .logo-search {
+  background: url('/loupewhite.png')
+    no-repeat;
+    float: left;
+    width:  200px;
+    height: 100px;
+    background-size:contain;
+}
+
+.bar-search {
+  color: black;
+}
+ 
+[class='dark-theme'] .bar-search {
+  color: white;
+}
+
+
       /* color palette from <https://github.com/vuejs/theme> */
 /* :root {
   --vt-c-white: #ffffff;
