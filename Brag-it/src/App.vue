@@ -1,5 +1,5 @@
 <script setup>
-import View_home from './views/View_home.vue';
+/* import View_home from './views/View_home.vue'; */
 import ThemeButton from "@/components/ThemeButton.vue";
 
 </script>
@@ -10,17 +10,12 @@ import ThemeButton from "@/components/ThemeButton.vue";
     <div class="logo"></div> 
     <theme-button/>
   </header>
-<!-- <RouterView/> -->
+  <RouterView/>
 
 <body>
-  <div class="card">
-      <h1>Popular</h1>
-      <p>Jordan</p>
-      <p>Car</p>
-      <p>Pigeon</p>
-  </div>
 
-  <View_home/>
+ 
+ <!--  <View_home/> -->
 </body>
 
 </div>
