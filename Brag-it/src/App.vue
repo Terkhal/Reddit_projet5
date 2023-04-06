@@ -1,6 +1,11 @@
 <script setup>
+import View_home from './views/View_home.vue';
+
 </script>
 
 <template>
-  <div> </div>
+  <main>
+    
+    <View_home/>
+  </main>
 </template>
