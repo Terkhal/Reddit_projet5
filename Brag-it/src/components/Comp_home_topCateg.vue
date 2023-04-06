@@ -50,6 +50,10 @@ let categ = ref ([])
 //     // console.log('this are all com=>',comments)
 
 
+//Math.max(ID){
+//    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+//    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+//}
 
 
 </script>
