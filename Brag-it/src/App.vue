@@ -1,3 +1,9 @@
+<script setup>
+import View_home from './views/View_home.vue';
+import ThemeButton from "@/components/ThemeButton.vue";
+
+</script>
+
 <template>
 <div class="container-center">
   <header>
@@ -13,11 +19,11 @@
       <p>Car</p>
       <p>Pigeon</p>
   </div>
+
+  <View_home/>
 </body>
 
 </div>
 </template>
 
-<script setup>
-import ThemeButton from "@/components/ThemeButton.vue";
-</script>
+
