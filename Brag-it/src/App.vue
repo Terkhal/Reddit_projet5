@@ -15,17 +15,18 @@ import Comp_app_login from "@/components/Comp_app_login.vue";
   <div class="bar-search">
   <input type="text" v-model="search" placeholder="Search..."/>
   </div>
-  <div><a href="" >signup</a></div>
+  <div><a href="/sign_up">signup</a></div>
   <Comp_app_login/>
   </header>
-<!-- <body>
-  <div class="card">
+
+<body>
+  <!-- <div class="card">
     <div>{{ categ.length }}</div>
     <div v-for="cat in categ">{{ cat.name }}  <countcom :catid="cat.id"/></div>
-  </div>
+  </div> -->
   <View_home/>
   <RouterView/>
-</body> -->
+</body>
 
 </div>
 </template>

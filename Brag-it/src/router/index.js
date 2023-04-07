@@ -7,6 +7,7 @@ import signup from '../views/View_signup.vue'
 import admin from '../views/View_admin.vue'
 import adminCrud from '../views/View_adminCrud.vue'
 import profile from '../views/View_profile.vue'
+import signupForm from '../components/Comp_signup_form.vue'
  
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +35,7 @@ const router = createRouter({
     {
       path: '/sign_up',
       name: 'signup',
-      component: signup
+      component: signup, signupForm
     },
     {
       path: '/admin',
