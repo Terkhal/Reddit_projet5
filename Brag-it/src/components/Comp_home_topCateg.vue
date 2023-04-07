@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+import {useRoute} from "vue-router";
 
+////////////////////// get comments of all posts by post id:
 
 ////////////////////// get all categs:
 
