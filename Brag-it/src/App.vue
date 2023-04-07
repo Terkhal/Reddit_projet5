@@ -15,6 +15,7 @@ import Comp_app_login from "@/components/Comp_app_login.vue";
   <div class="bar-search">
   <input type="text" v-model="search" placeholder="Search..."/>
   </div>
+  <div><a href="" >signup</a></div>
   <Comp_app_login/>
   </header>
 <body>

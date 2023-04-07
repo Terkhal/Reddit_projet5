@@ -10,8 +10,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Admin</a>
-      <a href="#">Profile</a>
+      <a href="/admin">Admin</a>
+      <a href="/user:user_id">Profile</a>
       <a href="#">Logout</a>
     </div>
   </div>
