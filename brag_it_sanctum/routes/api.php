@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\commentsController;
+use App\Http\Controllers\Api\DataController;
 use App\Http\Controllers\Api\PostsController;
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,18 @@ use App\Http\Controllers\Api\PostsController;
 |
 */
 
+Route::get("/categories/top", [DataController::class, "topCat"]);
+Route::get("/", [DataController::class, "allIn"]);
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
 Route::resource('users', UserController::class);
 Route::resource('categories', CategoriesController::class);
 Route::resource('comments', commentsController::class);
+Route::get('comments/category/{category}', [commentsController::class, 'getComfromCat']);
+Route::get('comments/post/{post}', [commentsController::class, 'getComfromPost']);
 Route::resource('posts', PostsController::class);
+Route::get('posts/category/{category}', [PostsController::class, 'getPostfromCat']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
