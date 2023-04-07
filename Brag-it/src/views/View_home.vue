@@ -5,6 +5,6 @@ import Comp_home_postsLists from '../components/Comp_home_postsLists.vue';
 
 <template>
   
-    <Comp_home_postsLists/>
+    <!-- <Comp_home_postsLists/> -->
 
 </template>

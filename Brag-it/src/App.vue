@@ -20,10 +20,8 @@ import Comp_app_login from "@/components/Comp_app_login.vue";
   </header>
 <body>
   <div class="card">
-      <h1>Popular</h1>
-      <p>Jordan</p>
-      <p>Car</p>
-      <p>Pigeon</p>
+    <div>{{ categ.length }}</div>
+    <div v-for="cat in categ">{{ cat.name }}  <countcom :catid="cat.id"/></div>
   </div>
   <View_home/>
   <RouterView/>
