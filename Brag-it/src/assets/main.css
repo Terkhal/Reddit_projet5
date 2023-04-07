@@ -1,5 +1,5 @@
 @import './base.css';
-p,h1 {
+p,h1, h2, tr {
   color: var(--text-primary-color);
 }
 
@@ -11,15 +11,36 @@ p,h1 {
   justify-content: center; */
 }
 
-.card {
-  margin: 10px 20px;
-  padding: 2rem 4rem;
-  height: 500px;
-  width: 200px;
+/* comp top cat display: */
+.topCatTable {
+  font-size: 20px;
+  margin: 10px 10px;
+  /* padding: 5rem 1rem; */
+  height: 200px;
+  width: 250px;
   text-align: center;
   border: 1px solid var(--accent-color);
   border-radius: 4px;
   background-color: var(--background-color-secondary);
+  text-transform: capitalize;
+}
+.topCatTable_catTitle{
+  padding: 2px;
+  font-size: 18px;
+}
+.topCatLinks{
+  text-decoration: none;
+  color: var(--text-primary-color);
+}
+.topCatTable_catTitle:hover{
+  text-decoration-line: underline;
+  text-decoration-color: #f74300;
+  /* transform: skew(-12deg) translateX(0%);
+  background: #f74300; */
+  
+}
+.topCatTable_catInfo{
+  font-size: 15px;
 }
 
 

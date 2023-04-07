@@ -13,13 +13,6 @@ import ThemeButton from "@/components/ThemeButton.vue";
 <!-- <RouterView/> -->
 
 <body>
-  <div class="card">
-      <h1>Popular</h1>
-      <p>Jordan</p>
-      <p>Car</p>
-      <p>Pigeon</p>
-  </div>
-
   <View_home/>
 </body>
 
