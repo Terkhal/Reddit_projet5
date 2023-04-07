@@ -1,6 +1,7 @@
 <script setup>
 import View_home from './views/View_home.vue';
 import ThemeButton from "@/components/ThemeButton.vue";
+import Comp_app_login from "@/components/Comp_app_login.vue";
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import ThemeButton from "@/components/ThemeButton.vue";
   <div class="bar-search">
   <input type="text" v-model="search" placeholder="Search..."/>
   </div>
+  <Comp_app_login/>
   </header>
 <body>
   <div class="card">

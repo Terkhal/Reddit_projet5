@@ -1,10 +1,13 @@
-html,
-/* body {
-  padding: 70;
-  margin: 50;
-} */
+@media (max-width: 800px) {
+  header {
+    justify-content: center;
+    max-width: 40%;
+  }
+}
 
 header {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+  Cantarell, 'Fira Sans', 'Droid Sans', 'Palenquin', sans-serif;
   display:flex;
   line-height: 1.5;
   max-height: 100px;
@@ -15,9 +18,8 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   background-color: var(--background-color-primary);
-  line-height: 1.6;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  Cantarell, 'Fira Sans', 'Droid Sans', 'Palenquin', sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,6 +32,7 @@ body {
   --background-color-secondary: #fafafa;
   --accent-color: #cacaca;
   --text-primary-color: #222;
+  --text-secondary-color: #f35906;
   --element-size: 4rem;
 }
 
@@ -39,12 +42,13 @@ body {
   --background-color-secondary: #2d2d30;
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
+  --text-secondary-color: #f35906;
 }
 
 .logo {
+  position: static;
   background: url('/bragit_white.png')
     no-repeat;
-    float: left;
     width:  200px;
     height: 100px;
     background-size:contain;
@@ -53,36 +57,65 @@ body {
 [class='dark-theme'] .logo {
   background: url('/logo_sans_background.png')
     no-repeat;
-    float: left;
-    width:  200px;
-    height: 150px;
     background-size:contain;
 }
 
 .logo-search {
   background: url('/loupeblack.png')
     no-repeat;
-    float: left;
-    width:  200px;
-    height: 100px;
+    margin: 30px 170px;
+    width:  50px;
+    height: 50px;
     background-size:contain;
 }
  
 [class='dark-theme'] .logo-search {
   background: url('/loupewhite.png')
     no-repeat;
-    float: left;
-    width:  200px;
-    height: 100px;
     background-size:contain;
 }
 
 .bar-search {
-  color: black;
+  position: absolute;
+  margin: 40px 500px;
 }
- 
-[class='dark-theme'] .bar-search {
-  color: white;
+
+/* Attribute to limit CSS to this component only */
+.switch-checkbox {
+  display: none;
+}
+
+.switch-label {
+  align-items: center;
+  background: var(--text-primary-color);
+  border: calc(var(--element-size) * 0.025) solid var(--accent-color);
+  border-radius: var(--element-size);
+  cursor: pointer;
+  display: flex;
+  font-size: calc(var(--element-size) * 0.3);
+  height: calc(var(--element-size) * 0.35);
+  position: relative;
+  padding: calc(var(--element-size) * 0.1);
+  transition: background 0.5s ease;
+  justify-content: space-between;
+  width: var(--element-size);
+  z-index: 1;
+}
+
+.switch-toggle {
+  position: absolute;
+  background-color: var(--background-color-primary);
+  border-radius: 50%;
+  top: calc(var(--element-size) * 0.07);
+  left: calc(var(--element-size) * 0.07);
+  height: calc(var(--element-size) * 0.4);
+  width: calc(var(--element-size) * 0.4);
+  transform: translateX(0);
+  transition: transform 0.3s ease, background-color 0.5s ease;
+}
+
+.switch-toggle-checked {
+  transform: translateX(calc(var(--element-size) * 0.6)) !important;
 }
 
 
