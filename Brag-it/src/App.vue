@@ -18,14 +18,14 @@ import Comp_app_login from "@/components/Comp_app_login.vue";
   <div><a href="" >signup</a></div>
   <Comp_app_login/>
   </header>
-<body>
+<!-- <body>
   <div class="card">
     <div>{{ categ.length }}</div>
     <div v-for="cat in categ">{{ cat.name }}  <countcom :catid="cat.id"/></div>
   </div>
   <View_home/>
   <RouterView/>
-</body>
+</body> -->
 
 </div>
 </template>
