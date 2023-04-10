@@ -1,25 +1,24 @@
-@media (max-width: 800px) {
-  header {
-    justify-content: center;
-    max-width: 40%;
-  }
-}
-
 header {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-  Cantarell, 'Fira Sans', 'Droid Sans', 'Palenquin', sans-serif;
-  display:flex;
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Palenquin', sans-serif;
+  display: flex;
   line-height: 1.5;
   max-height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+
+
+
 }
 
 body {
-  display:flex;
+  display: flex;
   min-height: 100vh;
   color: var(--color-text);
   background-color: var(--background-color-primary);
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-  Cantarell, 'Fira Sans', 'Droid Sans', 'Palenquin', sans-serif;
+  font-family: Inter, -apple-system, 'Palenquin', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +33,8 @@ body {
   --text-primary-color: #222;
   --text-secondary-color: #f35906;
   --element-size: 4rem;
+  --border-color-primary: #1e1e1e;
+  --border-color-secondary: #2d2d30;
 }
 
 /* Define styles for the root window with dark - mode preference */
@@ -42,43 +43,34 @@ body {
   --background-color-secondary: #2d2d30;
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
-  --text-secondary-color: #f35906;
+  --text-secondary-color: #F74300;
+  --border-color-primary: #ebebeb;
+  --border-color-secondary: #fafafa;
+
+  ;
 }
 
 .logo {
   position: static;
-  background: url('/bragit_white.png')
-    no-repeat;
-    width:  200px;
-    height: 100px;
-    background-size:contain;
+  background: url('/bragit_white.png') no-repeat;
+  width: 200px;
+  height: 100px;
+  background-size: contain;
 }
 
 [class='dark-theme'] .logo {
-  background: url('/logo_sans_background.png')
-    no-repeat;
-    background-size:contain;
+  background: url('/logo_sans_background.png') no-repeat;
+  background-size: contain;
 }
 
-.logo-search {
-  background: url('/loupeblack.png')
-    no-repeat;
-    margin: 30px 170px;
-    width:  50px;
-    height: 50px;
-    background-size:contain;
-}
- 
+
+
 [class='dark-theme'] .logo-search {
-  background: url('/loupewhite.png')
-    no-repeat;
-    background-size:contain;
+  background: url('/loupewhite.png') no-repeat;
+  background-size: contain;
 }
 
-.bar-search {
-  position: absolute;
-  margin: 40px 500px;
-}
+
 
 /* Attribute to limit CSS to this component only */
 .switch-checkbox {
@@ -119,7 +111,7 @@ body {
 }
 
 
-      /* color palette from <https://github.com/vuejs/theme> */
+/* color palette from <https://github.com/vuejs/theme> */
 /* :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -142,7 +134,7 @@ body {
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 } */
 
-      /* semantic color variables for this project */
+/* semantic color variables for this project */
 /* :root {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -180,4 +172,3 @@ body {
   font-weight: normal;
 }
 */
-
