@@ -1,5 +1,10 @@
 @import './base.css';
-p,h1, h2, tr {
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@300&display=swap');
+
+p,
+a,
+h1,
+h3 {
   color: var(--text-primary-color);
 }
 
@@ -43,6 +48,336 @@ p,h1, h2, tr {
   font-size: 15px;
 }
 
+/* Navbar container */
+.navbar {
+  padding-right: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 10%;
+}
+
+.login {
+  border-radius: 3px;
+  background-color: var(--background-color-primary);
+  width: 60px;
+  height: 30px;
+}
+
+.logo-search {
+  background: url('/loupeblack.png') no-repeat;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+}
+
+.bar-search {
+  width: 30%;
+  border: none;
+  display: flex;
+
+}
+
+.bar-search-input {
+  width: 100%;
+  border: none;
+  height: 30px;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border-radius: 20%;
+  border: none;
+  outline: none;
+  background-color: inherit;
+
+  /* Important for vertical align on mobile phones */
+}
+
+
+
+/* Add a background color to navbar links on hover */
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  color: var(--text-secondary-color);
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  border-radius: 10%;
+  display: none;
+  position: absolute;
+  background-color: var(--background-color-secondary);
+  padding: 12px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  color: var(--text-primary-color);
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: var(--background-color-primary);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.adminmenu {
+  text-align: left;
+  margin-top: 30px;
+
+  background-color: var(--background-color-primary);
+  border: 1px solid var(--border-color-primary);
+  width: 150px;
+  border-radius: 5px;
+  max-height: 200px;
+  padding-bottom: 10px;
+  width: 150px;
+}
+
+.bodyadmin {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+}
+
+.contentadmin {
+  width: 60%;
+
+}
+
+.h1 {
+  color: var(--text-primary-color);
+
+}
+
+.titlemenu {
+  color: var(--text-primary-color);
+  border-bottom: 1px solid var(--border-color-primary);
+
+
+
+}
+
+.divmenu {
+  text-align: center;
+}
+
+.contentmenu {
+  margin: 20px
+}
+
+.bodycontentadmin {
+  display: flex;
+
+}
+
+.crud {
+  width: 100%;
+}
+
+.crudtable {
+  border: 1px black solid;
+  border-radius: 5px;
+}
+
+.crudcreate {
+  border-radius: 3px;
+  background-color: var(--background-color-primary);
+  border: 1px solid var(--border-color-primary);
+  color: var(--text-primary-color);
+}
+
+.crudcreate:hover {
+  border-radius: 3px;
+  background-color: var(--hover-text-primary-color);
+  border: 1px solid var(--border-color-primary);
+  color: #F74300;
+  cursor: pointer;
+}
+
+.admin_edit {
+  background-color: #BFBFBF;
+  border-radius: 3px;
+  border: none;
+  color: #1E2019;
+}
+
+.admin_edit:hover {
+
+  color: #F74300;
+  cursor: pointer;
+}
+
+.admin_delete {
+  background-color: #ff5666;
+  border-radius: 3px;
+  border: none;
+  color: #FBF7F4;
+  font-weight: bold;
+
+}
+
+.admin_delete:hover {
+
+  color: black;
+  cursor: pointer;
+}
+
+.selectadmin {
+  width: -webkit-fill-available;
+}
+
+.inputdate {
+  width: -webkit-fill-available;
+
+}
+
+.value {
+  color: #F74300
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-inner {
+  background-color: var(--background-color-primary);
+  color: var(--text-primary-color);
+  text-align: center;
+  padding: 32px;
+  border-radius: 5px;
+
+
+
+}
+
+.popup-inner input {
+  border: none;
+}
+
+.cancel {
+  background-color: #FF5666;
+  border: none;
+  border-radius: 3px;
+  color: #FBF7F4;
+  cursor: pointer;
+  font-weight: bold;
+  height: 25px;
+}
+
+.confirm {
+  background-color: #8FD694;
+  border: none;
+  border-radius: 3px;
+  margin-right: 5px;
+  color: #FBF7F4;
+  cursor: pointer;
+  font-weight: bold;
+  height: 25px;
+  margin-top: 10px;
+}
+
+/* 
+
+light theme 
+* #FBF7F4 fond tableau
+* #37393A border
+* #F74300 couleur police option 
+
+dark theme 
+* #1E2019 fond tableau
+* #FBF7F4 border
+* #F74300 couleur police option 
+
+
+} */
+
+.crudtable {
+  margin: 10px;
+  border: 1px solid #37393A;
+  background-color: #FBF7F4;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.crudtable td,
+.crudtable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+
+.crudtable tbody td {
+  font-size: 13px;
+}
+
+.crudtable tr:nth-child(even) {
+  background: #E8E4E2;
+}
+
+.crudtable thead {
+  background: #1E2019;
+  border-bottom: 2px solid #1E2019;
+}
+
+.crudtable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FBF7F4;
+  text-align: center;
+  border-left: 2px solid #FBF7F4;
+}
+
+.crudtable thead th:first-child {
+  border-left: none;
+}
+
+.crudtable tfoot td {
+  font-size: 14px;
+}
+
+.crudtable tfoot .links {
+  text-align: right;
+}
+
+.crudtable tfoot .links a {
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+
 
 /* #app {
   max-width: 1280px;
@@ -59,21 +394,11 @@ a,
   transition: 0.4s;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
+#app {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
-} */
+}
+
+*/

@@ -1,19 +1,19 @@
 <script setup>
 import View_home from './views/View_home.vue';
 import ThemeButton from "@/components/ThemeButton.vue";
-// import countcom from './components/Comp_home_topCateg_Count.vue'
+import countcom from './components/Comp_home_topCateg_Count.vue'
 
 // test api
 
-// import { ref } from 'vue';
+import { ref } from 'vue';
 
-// const categ = ref([]);
-// const posts = ref([]);
+const categ = ref([]);
+const posts = ref([]);
 
-// fetch('http://127.0.0.1:8001/api/categories')
-// .then((response) => response.json() )
-// .then((data) => {console.log(data)
-// categ.value = data} )
+fetch('http://127.0.0.1:8001/api/categories')
+.then((response) => response.json() )
+.then((data) => {console.log(data)
+categ.value = data} )
 
 
 
@@ -22,17 +22,36 @@ import ThemeButton from "@/components/ThemeButton.vue";
 
 <template>
 <div class="container-center">
+
   <header>
-    <div class="logo"></div> 
-    <theme-button/>
+  
+  <div class="logo"></div>
+  <div class="bar-search">
+  <div class="logo-search"></div>
+  <input  class="bar-search-input" type="text" v-model="search" placeholder="Search..."/>
+  
+</div>
+  <Comp_app_login @isloggedin="verify"/>
+  <theme-button/>
+
   </header>
-<RouterView/>
+<!-- <RouterView/> -->
 
 <body>
-  <View_home/>
-</body>
+  <div class="card">
+    <div>{{ categ.length }}</div>
+    <div v-for="cat in categ">{{ cat.name }}  <countcom :catid="cat.id"/></div>
+  </div>
 
+  <!-- <View_home/> -->
+</body>
 </div>
 </template>
 
-
+<style>
+.dcbody{
+  display:block;
+  text-align: center;
+  margin-top: 200px;
+}
+</style>

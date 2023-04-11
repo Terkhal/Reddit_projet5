@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+
+use Illuminate\Support\Facades\DB;
+use App\Models\Categories;
 use App\Models\Comments;
+use App\Models\Posts;
 use App\Http\Controllers\Controller;
 use Egulias\EmailValidator\Parser\Comment;
 use Illuminate\Http\Request;
@@ -38,6 +42,7 @@ class commentsController extends Controller
                     'user_id' => 'required',
                     'is_sub_com' => 'required',
                     'reply_to' => 'required',
+
 
 
 
@@ -99,6 +104,8 @@ class commentsController extends Controller
                     'user_id' => 'required',
                     'is_sub_com' => 'required',
                     'reply_to' => 'required',
+                    'post_id'  => 'required',
+                    'category_id'  => 'required',
 
                 ]
             );
@@ -119,6 +126,8 @@ class commentsController extends Controller
                 'user_id' => $request->user_id,
                 'is_sub_com' => $request->is_sub_com,
                 'reply_to' => $request->reply_to,
+                'post_id' => $request->post_id,
+                'category_id' => $request->category_id,
 
 
 
@@ -147,5 +156,21 @@ class commentsController extends Controller
             'status' => true,
             'message' => 'Comment deleted Successfully',
         ], 200);
+    }
+
+    public function getComfromPost(Posts $post)
+    {
+        $comments = Comments::all()->where("post_id", $post->id);
+
+        return response()->json($comments);
+    }
+
+    public function getComfromCat($category)
+    {
+
+        $comments = Comments::all()->where("category_id", $category);
+
+
+        return response()->json($comments);
     }
 }

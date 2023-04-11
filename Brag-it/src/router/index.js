@@ -44,7 +44,7 @@ const router = createRouter({
       component: admin
     },
     {
-      path: '/admin/crud',
+      path: '/admin/:crud',
       name: 'adminCrud',
       component: adminCrud
     },
@@ -52,8 +52,7 @@ const router = createRouter({
       path: '/user/:user_id',
       name: 'profile',
       component: profile
-    },
-
+    }
   ]
 })
 
