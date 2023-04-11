@@ -1,23 +1,13 @@
 <script setup>
 import View_home from './views/View_home.vue';
 import ThemeButton from "@/components/ThemeButton.vue";
-import countcom from './components/Comp_home_topCateg_Count.vue'
+import Comp_app_login from "@/components/Comp_app_login.vue";
+import {ref, onMounted} from 'vue';
 
-// test api
-
-import { ref } from 'vue';
-
-const categ = ref([]);
-const posts = ref([]);
-
-fetch('http://127.0.0.1:8001/api/categories')
-.then((response) => response.json() )
-.then((data) => {console.log(data)
-categ.value = data} )
-
-
-
-
+let toggledisplay = ref(false)
+function verify(value){
+  toggledisplay.value = value
+}
 </script>
 
 <template>
@@ -35,15 +25,19 @@ categ.value = data} )
   <theme-button/>
 
   </header>
-<!-- <RouterView/> -->
+<body v-if="toggledisplay">
 
-<body>
-  <div class="card">
-    <div>{{ categ.length }}</div>
-    <div v-for="cat in categ">{{ cat.name }}  <countcom :catid="cat.id"/></div>
-  </div>
+    <View_home/>
+  <RouterView/>
 
-  <!-- <View_home/> -->
+
+   
+
+
+</body>
+<body class="dcbody" v-if="!toggledisplay">
+  <h1>Not connected</h1>
+  <h2>You must be logged in and over 13 to view this webside</h2>
 </body>
 </div>
 </template>

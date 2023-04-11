@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import {useRoute} from "vue-router";
+// import {useRoute} from "vue-router";
 
-////////////////////// get comments of all posts by post id:
 
 ////////////////////// get all categs:
 
@@ -52,25 +51,20 @@ let categ = ref ([])
 //     // console.log('this are all com=>',comments)
 
 
-//Math.max(ID){
-//    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
-//    const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
-//}
-
-
 </script>
 
 <template>
+    <p> test</p>
     <table class="topCatTable">
-                <h2> &#128293; POPULAR </h2>
+                <h2> &#128293; CATEGORIES </h2>
             <tr  v-for="cat in categ" :key="cat.id">
                 <RouterLink :to="'/category/'+ cat.id" class="topCatLinks"> 
                     <div class="topCatTable_catTitle"> Category {{ cat.name }} <br> 
                     </div> 
                 </RouterLink>
-                <div class="topCatTable_catInfo"> 10 Posts, &#128172; 10 comments </div>
+                <!-- <div class="topCatTable_catInfo"> 10 Posts, &#128172; 10 comments </div> -->
                 <br>
                 </tr>         
-        </table>
+        </table> 
 </template>
 
