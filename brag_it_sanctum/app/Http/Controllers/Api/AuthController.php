@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Rules\AnteriorToDate;
 
 class AuthController extends Controller
 {
@@ -28,10 +27,8 @@ class AuthController extends Controller
                     'firstname' => 'required',
                     'lastname' => 'required',
                     'email' => 'required|email|unique:users,email',
-                    'password' => ['required', 'min:8', 'regex:/[0-9]+/'],
-                    'is_admin' => 'required',
-                    'date_of_birth' => ['required', new AnteriorToDate],
-                    'avatar_path' => 'sometimes',
+                    'password' => 'required',
+                    'is_admin' => 'required'
                 ]
             );
 
@@ -49,16 +46,13 @@ class AuthController extends Controller
                 'lastname' => $request->lastname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'is_admin' => $request->is_admin,
-                'date_of_birth' =>  $request->date_of_birth,
-                'avatar_path' =>  $request->avatar_path
+                'is_admin' => $request->is_admin
             ]);
 
             return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken,
-                'user' => $user,
+                'token' => $user->createToken("API TOKEN")->plainTextToken
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -104,8 +98,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN", ['id' => $user->id])->plainTextToken,
-                'user' => $user,
+                'token' => $user->createToken("API TOKEN")->plainTextToken
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
