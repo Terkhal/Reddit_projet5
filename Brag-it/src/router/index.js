@@ -17,7 +17,7 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/post:post_id',
+      path: '/post/:post_id',
       name: 'singlePost',
       component: singlePost
     },
@@ -27,7 +27,7 @@ const router = createRouter({
       component: newPost
     },
     {
-      path: '/category:category_id/post:post_id',
+      path: '/category/:category_id/post:post_id',
       name: 'category',
       component: category
     },
@@ -47,7 +47,7 @@ const router = createRouter({
       component: adminCrud
     },
     {
-      path: '/user:user_id',
+      path: '/user/:user_id',
       name: 'profile',
       component: profile
     },
