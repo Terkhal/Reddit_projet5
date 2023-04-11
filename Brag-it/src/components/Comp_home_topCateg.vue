@@ -54,7 +54,6 @@ let categ = ref ([])
 </script>
 
 <template>
-    <p> test</p>
     <table class="topCatTable">
                 <h2> &#128293; CATEGORIES </h2>
             <tr  v-for="cat in categ" :key="cat.id">
