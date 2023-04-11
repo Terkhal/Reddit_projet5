@@ -19,7 +19,7 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/post/:post_id',
+      path: '/post:post_id',
       name: 'singlePost',
       component: singlePost
     },
