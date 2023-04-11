@@ -1,31 +1,30 @@
 <script setup>
-    // function putuser () {
-    // const url = http://127.0.0.1:8000/api/auth/register;
-    // }
 
 import { ref } from 'vue';
-
-  // all of these are automatically bound to the template
   
+  let errormessage=ref("");
   let firstname=ref("");
   let lastname=ref("");
   let username=ref("");
   let email=ref("");
   let password=ref("");
-  let picture=ref("");
-
-  // const emit = defineEmits(['title','content','id',"feedarray"])
+  let date_of_birth=ref("");
+  
+  // let picture=ref("");
 
     
   function addUser() {
    
-    // console.log("first:",firstname.value)
-    // console.log("last:",lastname.value)
-    // console.log("user:",username.value)
-    // console.log("email:",email.value)
-    // console.log("password:",password.value)
+    console.log("first:",firstname.value)
+    console.log("last:",lastname.value)
+    console.log("user:",username.value)
+    console.log("email:",email.value)
+    console.log("password:",password.value)
+    console.log("birthday:",date_of_birth.value)
+
+    // console.log("picture:",picture.value)
     
-    fetch('http://127.0.0.1:8000/api/auth/register', {
+  fetch('http://127.0.0.1:8000/api/auth/register', {
 	method: 'POST',
 	body: JSON.stringify({
 		firstname: firstname.value,
@@ -33,27 +32,37 @@ import { ref } from 'vue';
     username: username.value,
     email: email.value,
     password: password.value,
-    picture: picture.value,
+    date_of_birth: date_of_birth.value,
     is_admin: "0",
+
+    // picture: picture.value,
 	}),
 
 	headers: {
 		'Content-type': 'application/json; charset=UTF-8'
 	}
     
-}).then(function (response) {
+}).then(async function (response) {
 	if (response.ok) {
         
 		return response.json();
 	}
-	return Promise.reject(response);
+	return Promise.reject(await response.json());
 
 }).then ((data) => {
 
 console.log("feedback: ",data);
 
 }).catch((error) => {
-	console.warn('invalid query', error);
+  console.log('my errors => ',error);
+  const validationErrors = error.errors;
+  const messages = Object.keys(validationErrors).map((key) => {
+    console.log('messageslog', validationErrors[key][0]);
+    return validationErrors[key][0];
+  });
+
+  errormessage.value = messages;
+  console.log('my messages => ',messages);
 });
 
 }
@@ -61,9 +70,14 @@ console.log("feedback: ",data);
 </script>
 
 <template>
-    <div>
-      <form class = "signup" @submit.prevent="submitForm" v-if="!formSubmitted">
 
+      
+
+      <form class = "signup" @submit.prevent="submitForm" v-if="!formSubmitted">
+            <h1>Sign Up Form</h1>
+      <div style="color:red;font-size: 12px;" v-for="(message,index) in errormessage" :key="index">
+      {{ message }}
+      </div>
         <span class = "signup-span">First Name</span><br>
         <input class = "signup-input"
           v-model="firstname"
@@ -100,13 +114,23 @@ console.log("feedback: ",data);
         <input class = "signup-input"
           v-model="password"
           name="password"
-          type="text" required
+          type="password" required
           placeholder="Enter your password" 
         /><br>
 
+        <span class = "signup-span">Birthday</span><br>
+        <input class = "signup-input"
+          v-model="date_of_birth"
+          name="date_of_birth"
+          type="date" required
+          placeholder="Enter your birthday date"
+          min="1950-01-01" max="2023-01-01" 
+        /><br>
+
+        <!-- <span class = "signup-span">Profil picture</span><br>
         <input class = "submit-button" type="file" accept="image/*"
         @change="updatePhoto($event.target.name, $event.target.files)"
-        /><br>
+        /><br> -->
         
         <button class = "submit-button" v-on:click="addUser">Sign Up !</button>
       </form>
@@ -119,5 +143,4 @@ console.log("feedback: ",data);
         <p>Password: {{ password }}</p>
         <small>Please refresh the page</small>
       </div>
-    </div>
   </template>

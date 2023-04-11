@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\commentsController;
 use App\Http\Controllers\Api\DataController;
 use App\Http\Controllers\Api\PostsController;
+use Laravel\Sanctum\Sanctum;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,6 +32,7 @@ Route::resource('comments', commentsController::class);
 Route::get('comments/category/{category}', [commentsController::class, 'getComfromCat']);
 Route::get('comments/post/{post}', [commentsController::class, 'getComfromPost']);
 Route::resource('posts', PostsController::class);
+// ->middleware('auth:sanctum');
 Route::get('posts/category/{category}', [PostsController::class, 'getPostfromCat']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

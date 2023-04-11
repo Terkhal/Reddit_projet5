@@ -9,6 +9,7 @@ import adminCrud from '../views/View_adminCrud.vue'
 import profile from '../views/View_profile.vue'
 import signupForm from '../components/Comp_signup_form.vue'
  
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -43,7 +44,7 @@ const router = createRouter({
       component: admin
     },
     {
-      path: '/admin/crud',
+      path: '/admin/:crud',
       name: 'adminCrud',
       component: adminCrud
     },
@@ -51,8 +52,7 @@ const router = createRouter({
       path: '/user:user_id',
       name: 'profile',
       component: profile
-    },
-
+    }
   ]
 })
 
