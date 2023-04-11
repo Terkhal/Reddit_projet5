@@ -1,7 +1,10 @@
 <script setup>
 
+
 import { ref } from 'vue';
   
+// setTimeout( () => this.$router.push({ path: '/'}), 5000);
+
   let errormessage=ref("");
   let firstname=ref("");
   let lastname=ref("");
@@ -70,14 +73,11 @@ console.log("feedback: ",data);
 </script>
 
 <template>
-
-      
-
-      <form class = "signup" @submit.prevent="submitForm" v-if="!formSubmitted">
-            <h1>Sign Up Form</h1>
-      <div style="color:red;font-size: 12px;" v-for="(message,index) in errormessage" :key="index">
-      {{ message }}
-      </div>
+    <form class = "signup" @submit.prevent="submit" v-if="!savingSuccessful">
+       <h1>Sign Up Form</h1>
+       <div style="color:red;font-size: 12px;" v-for="(message,index) in errormessage" :key="index">
+       {{ message }}
+       </div>
         <span class = "signup-span">First Name</span><br>
         <input class = "signup-input"
           v-model="firstname"
@@ -132,15 +132,12 @@ console.log("feedback: ",data);
         @change="updatePhoto($event.target.name, $event.target.files)"
         /><br> -->
         
-        <button class = "submit-button" v-on:click="addUser">Sign Up !</button>
+        <button type="submit" class = "submit-button" v-on:click="addUser">Sign Up !</button>
+
+        <div v-if="savingSuccessful">
+          <div style="color:green;font-size: 20px;">Saving Successful !</div>
+          <RouterLink to="/"/>
+        </div>
       </form>
-      <div v-if="formSubmitted">
-        <h3>Form Submitted</h3>
-        <p>Firstame: {{ firstname }}</p>
-        <p>Lastname: {{ lastname }}</p>
-        <p>Userame: {{ username }}</p>
-        <p>Email: {{ email }}</p>
-        <p>Password: {{ password }}</p>
-        <small>Please refresh the page</small>
-      </div>
+
   </template>
