@@ -1,6 +1,6 @@
 @import './base.css';
 @import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@300&display=swap');
-p,a,h1,h3 {
+p,a,h1,h3,span {
   color: var(--text-primary-color);
 }
 
@@ -79,6 +79,37 @@ p,a,h1,h3 {
   display: block;
 }
 
+.signup {
+  border: 2px solid var(--accent-color);
+  border-radius: 1em;
+  padding: 5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) 
+}
+.signup-input {
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  padding: 4px 8px;
+  margin: 4px;
+}
+.signup-span {
+  font-size: 18px;
+  margin: 4px;
+  font-weight: 500;
+}
+.submit-button {
+  font-size: 15px;
+  color: var(--text-primary-color);
+  background-color: var(--background-color-secondary);
+  padding: 6px 12px;
+  border: none;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 
 

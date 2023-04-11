@@ -12,6 +12,7 @@ import { ref } from 'vue';
   let username=ref("");
   let email=ref("");
   let password=ref("");
+  let picture=ref("");
 
   // const emit = defineEmits(['title','content','id',"feedarray"])
 
@@ -29,10 +30,11 @@ import { ref } from 'vue';
 	body: JSON.stringify({
 		firstname: firstname.value,
 		lastname: lastname.value,
-        username: username.value,
-        email: email.value,
-        password: password.value,
-        is_admin: "0",
+    username: username.value,
+    email: email.value,
+    password: password.value,
+    picture: picture.value,
+    is_admin: "0",
 	}),
 
 	headers: {
@@ -56,54 +58,57 @@ console.log("feedback: ",data);
 
 }
 
-
 </script>
 
 <template>
     <div>
-      <form @submit.prevent="submitForm" v-if="!formSubmitted">
+      <form class = "signup" @submit.prevent="submitForm" v-if="!formSubmitted">
 
-        <span>First Name</span><br>
-        <input 
+        <span class = "signup-span">First Name</span><br>
+        <input class = "signup-input"
           v-model="firstname"
           name="firstname"
           type="text" required
           placeholder="Enter your first name" 
         /><br>
 
-        <span>Last Name</span><br>
-        <input 
+        <span class = "signup-span">Last Name</span><br>
+        <input class = "signup-input"
           v-model="lastname"
           name="lastname"
           type="text" required
           placeholder="Enter your last name" 
         /><br>
 
-        <span>Username</span><br>
-        <input 
+        <span class = "signup-span">Username</span><br>
+        <input class = "signup-input"
           v-model="username"
           name="username"
           type="text" required
-          placeholder="Enter your User name" 
+          placeholder="Enter your username" 
         /><br>
 
-        <span>Email</span><br>
-        <input 
+        <span class = "signup-span">Email</span><br>
+        <input class = "signup-input"
           v-model="email"
           name="email"
           type="email" required
           placeholder="Enter your email" 
         /><br>
 
-        <span>Password</span><br>
-        <input 
+        <span class = "signup-span">Password</span><br>
+        <input class = "signup-input"
           v-model="password"
           name="password"
           type="text" required
           placeholder="Enter your password" 
         /><br>
+
+        <input class = "submit-button" type="file" accept="image/*"
+        @change="updatePhoto($event.target.name, $event.target.files)"
+        /><br>
         
-        <button v-on:click="addUser">Sign Up !</button>
+        <button class = "submit-button" v-on:click="addUser">Sign Up !</button>
       </form>
       <div v-if="formSubmitted">
         <h3>Form Submitted</h3>
@@ -116,34 +121,3 @@ console.log("feedback: ",data);
       </div>
     </div>
   </template>
-  
-  <style scoped>
-    form {
-      padding: 10px;
-      border: 2px solid black;
-      border-radius: 5px;
-    }
-  
-    input {
-      padding: 4px 8px;
-      margin: 4px;
-    }
-  
-    span {
-      font-size: 18px;
-      margin: 4px;
-      font-weight: 500;
-    }
-  
-    .submit {
-      font-size: 15px;
-      color: #fff;
-      background: #222;
-      padding: 6px 12px;
-      border: none;
-      margin-top: 8px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-  
-  </style>
