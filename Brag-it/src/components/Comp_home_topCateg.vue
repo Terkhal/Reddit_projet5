@@ -1,14 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-import {useRoute} from "vue-router";
 
-////////////////////// get comments of all posts by post id:
+
+////////////////////// get all categs:
 
 const urlGetCateg = 'http://localhost:8000/api/categories'
 let categ = ref ([])
-// const route = useRoute();
-//    let categId = $route.params.id;
-//get mes catégories
+
     fetch(urlGetCateg)
         .then((response) => response.json())
         .then((cat) => {
@@ -17,12 +15,10 @@ let categ = ref ([])
             })
             // eslint-disable-next-line no-unused-vars
             .catch((error) => {
-                console.log(error)
+                console.log("fetch get categ:", error)
             });
             // console.log(this.categId);   
 
-
-        // console.log(this.$route.params.id);
  
 ///////////////////////////////// get all posts 
 
@@ -59,18 +55,16 @@ let categ = ref ([])
 </script>
 
 <template>
-    <p> {{ $route.params.id  }}</p>
-        <table class="topCatTable">
+    <table class="topCatTable">
                 <h2> &#128293; POPULAR </h2>
             <tr  v-for="cat in categ" :key="cat.id">
-                <a class = "topCatLinks" href="#"> 
+                <RouterLink :to="'/category/'+ cat.id" class="topCatLinks"> 
                     <div class="topCatTable_catTitle"> Category {{ cat.name }} <br> 
                     </div> 
-                </a>
+                </RouterLink>
                 <div class="topCatTable_catInfo"> 10 Posts, &#128172; 10 comments </div>
                 <br>
                 </tr>         
-                <br>
         </table>
 </template>
 
