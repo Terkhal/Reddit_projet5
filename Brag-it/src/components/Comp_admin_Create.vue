@@ -14,7 +14,7 @@ let is_admin=ref("");
 let date_of_birth=ref("");
 // let image= null;
 
-const emit = defineEmits(['refresh','creationstatus'])
+const emit = defineEmits(['refresh','creationstatus']);
 
 
 const prop = defineProps({
@@ -35,7 +35,7 @@ function createUser() {
 
    
    
-   fetch('http://127.0.0.1:8002/api/users', {
+   fetch('http://127.0.0.1:8000/api/users', {
    method: 'POST',
    body: JSON.stringify({
        username: username.value,
@@ -55,8 +55,7 @@ function createUser() {
 }).then(function (response) {
    if (response.ok) {
        emit('refresh')
-       
-       return response.json();
+     return response.json();
    }
    return Promise.reject(response);
 }).then ((data) => {

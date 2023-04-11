@@ -20,7 +20,7 @@ function deleteUser() {
 
    
    
-   fetch('http://127.0.0.1:8002/api/users/' + prop.userid, {
+   fetch('http://127.0.0.1:8000/api/users/' + prop.userid, {
    method: 'DELETE'      
    }).then(function (response) {
    if (response.ok) {

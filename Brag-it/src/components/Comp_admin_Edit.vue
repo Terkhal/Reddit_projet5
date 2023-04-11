@@ -7,7 +7,7 @@ import { ref,watch } from 'vue';
 
 // let image= null;
 
-const emit = defineEmits(['refreshed','creationstatus2'])
+const emit = defineEmits(['refreshed','creationstatus2']);
 
 
 const prop = defineProps({
@@ -21,7 +21,7 @@ const prop = defineProps({
 
 let user=ref()
 
-let url = "http://127.0.0.1:8002/api/users/" + prop.userid ;
+let url = "http://127.0.0.1:8000/api/users/" + prop.userid ;
 function fetchuser(){
     fetch(url)
     .then((response) => response.json()) 
@@ -54,7 +54,7 @@ function editUser(username,firstname,lastname,password,email,avatar_path,date_of
 
    
    
-   fetch('http://127.0.0.1:8002/api/users/' + prop.userid, {
+   fetch('http://127.0.0.1:8000/api/users/' + prop.userid, {
    method: 'PUT',
    body: JSON.stringify({
        username: username,
@@ -73,13 +73,12 @@ function editUser(username,firstname,lastname,password,email,avatar_path,date_of
    
 }).then(function (response) {
    if (response.ok) {
-       emit('refreshed')
-       
+     
        return response.json();
    }
    return Promise.reject(response);
 }).then ((data) => {
-   
+    emit('refreshed')
     emit('creationstatus2', data.message)
     console.log("prout: ",data.message);
       

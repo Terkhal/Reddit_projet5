@@ -32,7 +32,7 @@ function creationstatusmessage(value){
 // let item = "";
 let crud = ref()
 function gofetch(param) {
-let url = "http://127.0.0.1:8002/api/" + param ;
+let url = "http://127.0.0.1:8000/api/" + param ;
 fetch(url)
 .then((response) => response.json()) 
 .then((data) => { 
@@ -43,7 +43,7 @@ fetch(url)
 }
 
 gofetch(route.params.crud);
-
+console.log('je refresh')
 watch(() => route.params.crud, () => {
     gofetch(route.params.crud);
     console.log(crud)

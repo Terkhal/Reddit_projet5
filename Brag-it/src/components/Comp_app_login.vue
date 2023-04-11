@@ -54,7 +54,7 @@ isloggedin()
 function connectUser(){
   console.log('email is:',email.value)
   console.log('password is:',password.value)
-  fetch('http://127.0.0.1:8002/api/auth/login', {
+  fetch('http://127.0.0.1:8000/api/auth/login', {
 	method: 'POST',
 	body: JSON.stringify({
 		email: email.value,
