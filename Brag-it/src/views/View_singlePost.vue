@@ -19,8 +19,10 @@ fetch( url + postId)
 
 <template>
     <div class="card" v-if="post">
-        <h3>{{post.title}}</h3>
-        <p>{{post.content}}</p>
+        <h3 class="title">{{post.title}}</h3>
+        <p class="content">{{post.content}}</p>
+        <p class="date">{{ post.created_at }}</p>
+        <p class="user">{{ post.user_id }}</p>
     </div>
     
     <a href="/"><input type="button" name="home" value="return to home" style="margin-top: 10px;" class="flatButton"></a>
