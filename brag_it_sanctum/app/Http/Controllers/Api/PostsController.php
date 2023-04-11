@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -19,7 +20,32 @@ class PostsController extends Controller
         $posts = Posts::all();
 
 
-        // On retourne les informations des utilisateurs en JSON
+        foreach ($posts as $post) {
+            // Retrieve information about the category associated with the comment
+            $category_id = $post->category_id;
+            if ($category_id !== null) {
+                $category = DB::table('categories')->where('id', $category_id)->first();
+                $post->category = $category;
+            }
+
+            // Retrieve information about the user who made the comment
+            $user_id = $post->user_id;
+            if ($user_id !== null) {
+                $user = DB::table('users')->where('id', $user_id)->first();
+                $post->user = $user;
+            }
+
+
+            // Count the number of comments for the post
+            $comments_count = DB::table('comments')->where('post_id', $post->id)->count();
+            $post->comments_count = $comments_count;
+        }
+
+
+
+
+
+        //return all data as json
         return response()->json($posts);
     }
 
@@ -39,11 +65,13 @@ class PostsController extends Controller
                     'content' => 'required',
                     'user_id' => 'required',
                     'category_id' => 'required',
-                    'image_path' => 'required',
-                    'is_archived' => 'required',
+                    'image_path' => 'nullable',
+                    'is_archived' => 'nullable',
 
                 ]
             );
+
+            $isArchived = $request->filled('is_archived') ? $request->input('is_archived') : false;
 
             if ($validatePost->fails()) {
                 return response()->json([
@@ -59,7 +87,7 @@ class PostsController extends Controller
                 'user_id' => $request->user_id,
                 'category_id' => $request->category_id,
                 'image_path' => $request->image_path,
-                'is_archived' => $request->is_archived,
+                'is_archived' => $isArchived,
 
 
             ]);

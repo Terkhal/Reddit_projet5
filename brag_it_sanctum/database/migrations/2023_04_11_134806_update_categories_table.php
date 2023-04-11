@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+
+        Schema::table('categories', function (Blueprint $table) {
+            // $table->renameColumn('emp_name', 'employee_name'); // Renaming "emp_name" to "employee_name"
+            // $table->string('gender', 10)->change(); // Change Datatype length
+            // $table->dropColumn('active'); // Remove "active" field
+            // $table->boolean('admin')->after('updated_at'); // Add "status" column
             $table->boolean('is_archived')->default(false);
             $table->string('banner')->nullable();
-            $table->timestamps();
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        //
     }
 };
