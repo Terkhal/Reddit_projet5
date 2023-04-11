@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Posts;
-use App\Models\Comments;
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +15,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Posts::all();
-
 
         // On retourne les informations des utilisateurs en JSON
         return response()->json($posts);
@@ -151,11 +148,5 @@ class PostsController extends Controller
             'status' => true,
             'message' => 'Category deleted Successfully',
         ], 200);
-    }
-
-    public function getPostfromCat(Categories $category)
-    {
-        $categories = Posts::all()->where("category_id", $category->id);
-        return response()->json($categories);
     }
 }
