@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('content');
+            $table->integer('post_id');
             $table->integer('user_id')->nullable();
             $table->boolean('is_archived')->default(false);
             $table->boolean('is_sub_com')->default(false);

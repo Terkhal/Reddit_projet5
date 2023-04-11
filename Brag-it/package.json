@@ -16,6 +16,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
     "dayjs": "^1.11.7",
+    "js-cookie": "^3.0.1",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

@@ -1,23 +1,24 @@
-html,
-/* body {
-  padding: 70;
-  margin: 50;
-} */
-
 header {
-  display:flex;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Palenquin', sans-serif;
+  display: flex;
   line-height: 1.5;
   max-height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+
+
+
 }
 
 body {
-  display:flex;
+  display: flex;
   min-height: 100vh;
   color: var(--color-text);
   background-color: var(--background-color-primary);
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Inter, -apple-system, 'Palenquin', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,7 +31,10 @@ body {
   --background-color-secondary: #fafafa;
   --accent-color: #cacaca;
   --text-primary-color: #222;
+  --text-secondary-color: #f35906;
   --element-size: 4rem;
+  --border-color-primary: #1e1e1e;
+  --border-color-secondary: #2d2d30;
 }
 
 /* Define styles for the root window with dark - mode preference */
@@ -39,27 +43,75 @@ body {
   --background-color-secondary: #2d2d30;
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
+  --text-secondary-color: #F74300;
+  --border-color-primary: #ebebeb;
+  --border-color-secondary: #fafafa;
+
+  ;
 }
 
 .logo {
-  background: url('/bragit_white.png')
-    no-repeat;
-    float: left;
-    width:  200px;
-    height: 100px;
-    background-size:contain;
+  position: static;
+  background: url('/bragit_white.png') no-repeat;
+  width: 200px;
+  height: 100px;
+  background-size: contain;
 }
 
 [class='dark-theme'] .logo {
-  background: url('/logo_sans_background.png')
-    no-repeat;
-    float: left;
-    width:  200px;
-    height: 150px;
-    background-size:contain;
+  background: url('/logo_sans_background.png') no-repeat;
+  background-size: contain;
 }
 
-      /* color palette from <https://github.com/vuejs/theme> */
+
+
+[class='dark-theme'] .logo-search {
+  background: url('/loupewhite.png') no-repeat;
+  background-size: contain;
+}
+
+
+
+/* Attribute to limit CSS to this component only */
+.switch-checkbox {
+  display: none;
+}
+
+.switch-label {
+  align-items: center;
+  background: var(--text-primary-color);
+  border: calc(var(--element-size) * 0.025) solid var(--accent-color);
+  border-radius: var(--element-size);
+  cursor: pointer;
+  display: flex;
+  font-size: calc(var(--element-size) * 0.3);
+  height: calc(var(--element-size) * 0.35);
+  position: relative;
+  padding: calc(var(--element-size) * 0.1);
+  transition: background 0.5s ease;
+  justify-content: space-between;
+  width: var(--element-size);
+  z-index: 1;
+}
+
+.switch-toggle {
+  position: absolute;
+  background-color: var(--background-color-primary);
+  border-radius: 50%;
+  top: calc(var(--element-size) * 0.07);
+  left: calc(var(--element-size) * 0.07);
+  height: calc(var(--element-size) * 0.4);
+  width: calc(var(--element-size) * 0.4);
+  transform: translateX(0);
+  transition: transform 0.3s ease, background-color 0.5s ease;
+}
+
+.switch-toggle-checked {
+  transform: translateX(calc(var(--element-size) * 0.6)) !important;
+}
+
+
+/* color palette from <https://github.com/vuejs/theme> */
 /* :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -82,7 +134,7 @@ body {
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 } */
 
-      /* semantic color variables for this project */
+/* semantic color variables for this project */
 /* :root {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -120,4 +172,3 @@ body {
   font-weight: normal;
 }
 */
-

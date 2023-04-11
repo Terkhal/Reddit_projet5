@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Posts;
-use App\Models\Comments;
-use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class PostsController extends Controller
+
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Posts::all();
-
+        $categories = Categories::all();
 
         // On retourne les informations des utilisateurs en JSON
-        return response()->json($posts);
+        return response()->json($categories);
     }
 
 
@@ -32,41 +31,34 @@ class PostsController extends Controller
     {
         try {
             //Validated
-            $validatePost = Validator::make(
+            $validateCat = Validator::make(
                 $request->all(),
                 [
-                    'title' => 'required',
-                    'content' => 'required',
-                    'user_id' => 'required',
-                    'category_id' => 'required',
-                    'image_path' => 'required',
+                    'name' => 'required',
                     'is_archived' => 'required',
+                    'banner' => 'required',
 
                 ]
             );
 
-            if ($validatePost->fails()) {
+            if ($validateCat->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
-                    'errors' => $validatePost->errors()
+                    'errors' => $validateCat->errors()
                 ], 401);
             }
 
-            Posts::create([
-                'title' => $request->title,
-                'content' => $request->content,
-                'user_id' => $request->user_id,
-                'category_id' => $request->category_id,
-                'image_path' => $request->image_path,
+            Categories::create([
+                'name' => $request->name,
                 'is_archived' => $request->is_archived,
-
+                'banner' => $request->banner,
 
             ]);
 
             return response()->json([
                 'status' => true,
-                'message' => 'Post Created Successfully',
+                'message' => 'Cat Created Successfully',
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -79,50 +71,47 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Posts $post)
+    public function show(Categories $category)
     {
-        return response()->json($post);
+        return response()->json($category);
     }
 
     /**
+
+
+  
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Posts $post)
+    public function update(Request $request, Categories $category)
     {
         try {
 
 
             //Validated
-            $validatePost = Validator::make(
+            $validateCat = Validator::make(
                 $request->all(),
                 [
-                    'title' => $request->title,
-                    'content' => $request->content,
-                    'user_id' => $request->user_id,
-                    'category_id' => $request->category_id,
-                    'image_path' => $request->image_path,
-                    'is_archived' => $request->is_archived,
+                    'name' => 'required',
+                    'is_archived' => 'required',
+                    'banner' => 'required',
 
                 ]
             );
 
-            if ($validatePost->fails()) {
+            if ($validateCat->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
-                    'errors' => $validatePost->errors()
+                    'errors' => $validateCat->errors()
                 ], 401);
             }
 
 
-            Posts::where('id', $post->id)->update([
+            Categories::where('id', $category->id)->update([
 
-                'title' => $request->title,
-                'content' => $request->content,
-                'user_id' => $request->user_id,
-                'category_id' => $request->category_id,
-                'image_path' => $request->image_path,
+                'name' => $request->name,
                 'is_archived' => $request->is_archived,
+                'banner' => $request->banner,
 
 
 
@@ -130,7 +119,7 @@ class PostsController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'Post updated Successfully',
+                'message' => 'Cat updated Successfully',
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -143,19 +132,13 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Posts $post)
+    public function destroy(Categories $category)
     {
-        Posts::where('id', $post->id)->delete();
+        Categories::where('id', $category->id)->delete();
 
         return response()->json([
             'status' => true,
             'message' => 'Category deleted Successfully',
         ], 200);
-    }
-
-    public function getPostfromCat(Categories $category)
-    {
-        $categories = Posts::all()->where("category_id", $category->id);
-        return response()->json($categories);
     }
 }
