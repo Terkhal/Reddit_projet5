@@ -1,5 +1,5 @@
 <script setup>
-import View_home from './views/View_home.vue';
+/* import View_home from './views/View_home.vue'; */
 import ThemeButton from "@/components/ThemeButton.vue";
 import Comp_app_login from "@/components/Comp_app_login.vue";
 import {ref, onMounted} from 'vue';
@@ -29,7 +29,7 @@ function verify(value){
 <!-- <body v-if="toggledisplay"> -->
   <body>
 
-    <View_home/>
+    <!-- <View_home/> -->
   <RouterView/>
 
 
