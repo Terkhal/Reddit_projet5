@@ -151,7 +151,6 @@ const togglepop = (trigger) =>{
   </div>
 
 
-
   <div class="dropdown" v-if="userlogname">
       <button class="dropbtn">  
         <h3>Hello {{ userlogname }}  ⌄
