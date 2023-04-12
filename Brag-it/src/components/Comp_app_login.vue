@@ -32,7 +32,7 @@ function logout(){
 
 function isloggedin(){
 
-const userCookiename = Cookies.get('userfirstname');
+const userCookiename = Cookies.get('username');
 const tokenCookie = Cookies.get('token');
 const adminCookie = Cookies.get('useradmin');
 if (tokenCookie) {
@@ -76,13 +76,12 @@ function connectUser(){
 }).then ((data) => {
   console.log('this will be my cookie', data.user)
      Cookies.set('userid', data.user.id, { expires: 7 });
-     Cookies.set('userfirstname', data.user.firstname, { expires: 7 });
-     Cookies.set('userlastname', data.user.lastname, { expires: 7 });
+     Cookies.set('username', data.user.username, { expires: 7 });
      Cookies.set('useradmin', data.user.is_admin, { expires: 7 });
     Cookies.set('token', data.token, { expires: 7 });
 	 console.log("return: ",data.user, { expires: 7});
  
-   const userCookiename = Cookies.get('userfirstname');
+   const userCookiename = Cookies.get('username');
    const tokenCookie = Cookies.get('token');
 if (tokenCookie) {
   isloggedin()

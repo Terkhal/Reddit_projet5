@@ -1,5 +1,8 @@
 <script setup>
 
+import { useRoute } from 'vue-router'
+
+const route = useRoute();
 
 
 const emit = defineEmits(['refresheded','creationstatus3'])
@@ -9,18 +12,20 @@ const prop = defineProps({
     toggleforms:{
         type: Function,
     },
-    userid: {
+    id: {
         type: Number,
+    },
+    name: {
+        type: String,
     }
 
 })
 
-function deleteUser() {
+function deleteData() {
    
 
    
-   
-   fetch('http://127.0.0.1:8000/api/users/' + prop.userid, {
+   fetch('http://127.0.0.1:8000/api/' + route.params.crud + '/' + prop.id, {
    method: 'DELETE'      
    }).then(function (response) {
    if (response.ok) {
@@ -31,6 +36,7 @@ function deleteUser() {
 }).then ((data) => {
     emit('creationstatus3', data.message)
     emit('refresheded')
+    prop.toggleforms();
     console.log("prout: ",data.message);
       
 }).catch((error) => {
@@ -45,22 +51,24 @@ function deleteUser() {
 
 
 
+
+
 </script>
 
 <template>
 <div class="popup">
     <div class="popup-inner">
 <h3> Are you sure ?</h3>
-        <table class="deletetable">
-      
-            <tr>
-                
-                <td> <button class="confirm" @click="toggleforms()"  v-on:click="deleteUser()">Delete</button>
-                    <button class="cancel" @click="toggleforms()">Cancel</button></td>
-             
-            </tr>
-        </table>
-     
+<p> you are about to delete : <br /> <span class="value">{{ name }} </span> from <span class="value">{{ route.params.crud }} </span> </p>
+<div>       
+
+            
+               
+     <button class="confirm"  v-on:click="deleteData">Confirm</button>
+     <button class="cancel" @click="toggleforms()">Cancel</button>
+        
+        
+    </div>
        
       
     </div>
@@ -72,8 +80,6 @@ function deleteUser() {
 <style scoped>
 
 
-td{
-    border:none;
-}
+
 </style>
 
