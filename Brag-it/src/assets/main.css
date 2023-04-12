@@ -439,7 +439,7 @@ dark theme
 
 .crudtable {
   margin: 10px;
-  border: 1px solid #37393A;
+  /* border: 1px solid #37393A; */
   background-color: #FBF7F4;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -451,8 +451,10 @@ dark theme
 
 .crudtable td,
 .crudtable th {
-  border: 1px solid #AAAAAA;
+  /* border: 1px solid #AAAAAA; */
   padding: 3px 2px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .crudtable tbody td {
