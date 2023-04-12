@@ -4,10 +4,14 @@ import ThemeButton from "@/components/ThemeButton.vue";
 import Comp_app_login from "@/components/Comp_app_login.vue";
 import {ref, onMounted} from 'vue';
 
+
+let search = ref('');
+console.log(search)
 let toggledisplay = ref(false)
 function verify(value){
   toggledisplay.value = value
 }
+
 </script>
 
 <template>
@@ -21,6 +25,7 @@ function verify(value){
   <input  class="bar-search-input" type="text" v-model="search" placeholder="Search..."/>
   
 </div>
+
   <Comp_app_login @isloggedin="verify"/>
   <theme-button/>
 
@@ -28,7 +33,7 @@ function verify(value){
 <body v-if="toggledisplay">
 
     <!-- <View_home/> -->
-  <RouterView/>
+  <RouterView />
 
 
    
