@@ -78,7 +78,7 @@ function connectUser(){
     Cookies.set('token', data.token, { expires: 7 });
 	 console.log("return: ",data.user, { expires: 7});
  
-   const userCookiename = Cookies.get('userfirstname');
+   const userCookiename = Cookies.get('username');
    const tokenCookie = Cookies.get('token');
 if (tokenCookie) {
   isloggedin()
