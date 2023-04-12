@@ -3,11 +3,10 @@ import Home from '../views/View_home.vue'
 import singlePost from '../views/View_singlePost.vue'
 import newPost from '../views/View_newPost.vue'
 import category from '../views/View_category.vue'
-import signup from '../views/View_signup.vue'
 import admin from '../views/View_admin.vue'
 import adminCrud from '../views/View_adminCrud.vue'
 import profile from '../views/View_profile.vue'
-import signupForm from '../components/Comp_signup_form.vue'
+
  
 
 const router = createRouter({
@@ -32,11 +31,6 @@ const router = createRouter({
       path: '/category/:category_id/post:post_id',
       name: 'category',
       component: category
-    },
-    {
-      path: '/sign_up',
-      name: 'signup',
-      component: signup, signupForm
     },
     {
       path: '/admin',

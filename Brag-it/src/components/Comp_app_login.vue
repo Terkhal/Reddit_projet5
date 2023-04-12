@@ -1,6 +1,7 @@
 <script setup>
 import {ref, onMounted} from 'vue';
 import loginpop from './Comp_home_loginpopup.vue';
+import signuppop from './Comp_signup_form.vue';
 import Cookies from 'js-cookie';
 
 const emit = defineEmits('isloggedin')
@@ -8,7 +9,9 @@ let userlogname = ref('')
 let useradmin = ref('')
 const popup =ref({
   btrigger: false,
+  signup:false
 })
+
 let email = ref('');
 let password = ref('');
 
@@ -120,28 +123,37 @@ const togglepop = (trigger) =>{
 
 <template>
 <div class="navbar">
-  <div v-if="!userlogname"><RouterLink :to="'/sign_up'">Sign-up</RouterLink></div>
+  <div v-if="!userlogname"> <button class = "signup-button" v-on:click="togglepop('signup')">  
+         Sign up
+      </button></div>
+      <signuppop v-if="popup.signup" :togglepopup="()=>togglepop('signup')" />
   <div v-if="!userlogname" >
-       <button class="login" v-on:click="togglepop('btrigger')">  
+       <button class = "signup-button" v-on:click="togglepop('btrigger')">  
          Login
       </button>
       <loginpop v-if="popup.btrigger" :togglepopup="()=>togglepop('btrigger')">
-        <h2>sign in</h2>
+      
+        <h1>Sign In Form</h1>
+        
         <div>
-          <div> <p>Email</p>
-        <input type="text" v-model="email"> 
+        <span class = "signup-span">Email</span><br>
+        <input class = "signup-input" type="text"
+        v-model="email" placeholder="Enter your email"> 
         </div>
-        <div> <p>Password</p>
-        <input type="password" v-model="password">
+        <div> 
+        <span class = "signup-span">Password</span><br>
+        <input class = "signup-input" type="password"
+        v-model="password" placeholder="Enter your password">
         </div>
-        </div>
-        <button @click="connectUser"  v-on:click="togglepop('btrigger')" >Connect</button>
+        <button class="confirm" @click="connectUser"  
+        v-on:click.prevent="togglepop('btrigger')">Connect</button>
       </loginpop>
+     
   </div>
 
 
 
-  <div class="dropdown"  v-if="userlogname">
+  <div class="dropdown" v-if="userlogname">
       <button class="dropbtn">  
         <h3>Hello {{ userlogname }}  ⌄
         </h3>

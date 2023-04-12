@@ -2,6 +2,11 @@
 
 
 import { ref } from 'vue';
+const prop = defineProps({
+    togglepopup:{
+        type: Boolean,
+    }
+})
   
 // setTimeout( () => this.$router.push({ path: '/'}), 5000);
 
@@ -73,6 +78,8 @@ console.log("feedback: ",data);
 </script>
 
 <template>
+  <div class="popup">
+    <div class="popup-inner">
     <form class = "signup" @submit.prevent="submit" v-if="!savingSuccessful">
        <h1>Sign Up Form</h1>
        <div style="color:red;font-size: 12px;" v-for="(message,index) in errormessage" :key="index">
@@ -132,12 +139,16 @@ console.log("feedback: ",data);
         @change="updatePhoto($event.target.name, $event.target.files)"
         /><br> -->
         
-        <button type="submit" class = "submit-button" v-on:click="addUser">Sign Up !</button>
+        <button type="submit" class="confirm" v-on:click.prevent="addUser">Sign Up !</button>
+        <button class="cancel" @click="togglepopup()">Cancel</button>
 
         <div v-if="savingSuccessful">
           <div style="color:green;font-size: 20px;">Saving Successful !</div>
           <RouterLink to="/"/>
         </div>
       </form>
+    </div>
+ </div>
+
 
   </template>
