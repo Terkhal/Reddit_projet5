@@ -21,7 +21,30 @@ class commentsController extends Controller
     {
         $comments = Comments::all();
 
-        // On retourne les informations des utilisateurs en JSON
+        foreach ($comments as $comment) {
+            // Retrieve information about the category associated with the comment
+            $category_id = $comment->category_id;
+            if ($category_id !== null) {
+                $category = DB::table('categories')->where('id', $category_id)->first();
+                $comment->category = $category;
+            }
+
+            // Retrieve information about the user who made the comment
+            $user_id = $comment->user_id;
+            if ($user_id !== null) {
+                $user = DB::table('users')->where('id', $user_id)->first();
+                $comment->user = $user;
+            }
+
+            // Retrieve information about the user who made the comment
+            $post_id = $comment->post_id;
+            if ($post_id !== null) {
+                $post = DB::table('posts')->where('id', $post_id)->first();
+                $comment->post = $post;
+            }
+        }
+
+        // Return the comments information in JSON
         return response()->json($comments);
     }
 
