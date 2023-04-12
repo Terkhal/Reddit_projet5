@@ -13,7 +13,8 @@ fetch('http://127.0.0.1:8000/api/posts')
 
 // let creationDate = data.created_at.format('DD/MM/YYYY'); 
 // dayjs.extend(relativeTime);
-let date = new Date (datas.value.created_at)
+// let date = new Date (datas.value.created_at)
+// let date = new Date (datas.value.created_at)
 
 // console.log(getDay(){date});
 </script>
@@ -29,13 +30,11 @@ let date = new Date (datas.value.created_at)
             <div>
                 <p class="post_user">{{ data.user_id }} </p>
                 <!-- <p class="post_date"> {{ data.created_at ('YYYY-MM-DD')  }}  </p> -->
-                <p class="post_date"> {{ date.getDay() + "/" + date.getMonth() +""+ date.getFullYear() }}  </p>
+                <!-- <p class="post_date"> {{ date.getDay() + "/" + date.getMonth() +""+ date.getFullYear() }}  </p> -->
+                <!-- <p class="post_date"> {{ parseInt(date.getDay()) + "/" + date.getMonth() +""+ date.getFullYear() }}  </p> -->
+                <p class="post_date"> {{ data.created_at }}  </p>
                 <!-- <p class="post_date"> {{ date.getDay  }}  </p> -->
-                <!-- <p class="post_date"> {{ date.getDay  }}  </p> -->
-                
             </div>
-
-            <!--  -->
 
             <router-link :to="'/post/' + data.id">
                 <h2 class="post_title">{{ data.title }}</h2>
@@ -44,7 +43,7 @@ let date = new Date (datas.value.created_at)
                 </div>
             </router-link>
                 <div v-if="data.comments_count == undefined">
-                    <p> je teste ici: {{ data.comments_count }} fin </p>
+                    <p> {{ data.comments_count }} </p>
                 </div>
 
         </div>

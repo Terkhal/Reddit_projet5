@@ -4,6 +4,7 @@
 
 import { ref } from "vue"
 import { useRoute } from "vue-router"
+import Comp_topCat from '../components/Comp_home_topCateg.vue';
 //recuperation des posts par id de post avec un fetch
 let post = ref([]);
 let route = useRoute();
@@ -21,6 +22,8 @@ fetch(url + postId)
 </script>   
 
 <template>
+<Comp_topCat/>
+<div class = "display_posts"> 
     <div class="card_post" v-if="post">
         <div>
             <p class="post_date">{{ post.created_at }}</p>
@@ -31,6 +34,7 @@ fetch(url + postId)
             <p> {{ post.content }} </p>
         </div>
     </div>
+</div>
 
 
     <a href="/"><input type="button" name="home" value="return to home" style="margin-top: 10px;" class="flatButton"></a>
