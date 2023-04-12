@@ -33,16 +33,13 @@ fetch('http://127.0.0.1:8000/api/posts')
             <!-- | dayjs('YYYY-MM-DD') -->
 
             <router-link :to="'/post/' + data.id">
-                <h2 class="post_title">{{ data.title }}</h2><!-- titre du post -->
-            </router-link>
-            <div class="post_content">
-                
-                <router-link :to="'/post/' + data.id">
+                <h2 class="post_title">{{ data.title }}</h2>
+                <div class="post_content">
                     <p class="comment_text">{{ data.content }}</p>
-                </router-link>
                 </div>
+            </router-link>
                 <div v-if="data.comments_count == undefined">
-                    <p> {{ data.comments_count }}</p>
+                    <p> je teste ici: {{ data.comments_count }} fin </p>
                 </div>
 
         </div>
