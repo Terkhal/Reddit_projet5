@@ -19,7 +19,7 @@ class PostsController extends Controller
     {
         $posts = Posts::all();
 
-
+        //test
         foreach ($posts as $post) {
             // Retrieve information about the category associated with the comment
             $category_id = $post->category_id;
