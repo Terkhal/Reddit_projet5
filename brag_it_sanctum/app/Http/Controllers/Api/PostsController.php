@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -65,13 +64,11 @@ class PostsController extends Controller
                     'content' => 'required',
                     'user_id' => 'required',
                     'category_id' => 'required',
-                    'image_path' => 'nullable',
-                    'is_archived' => 'nullable',
+                    'image_path' => 'required',
+                    'is_archived' => 'required',
 
                 ]
             );
-
-            $isArchived = $request->filled('is_archived') ? $request->input('is_archived') : false;
 
             if ($validatePost->fails()) {
                 return response()->json([
@@ -87,7 +84,7 @@ class PostsController extends Controller
                 'user_id' => $request->user_id,
                 'category_id' => $request->category_id,
                 'image_path' => $request->image_path,
-                'is_archived' => $isArchived,
+                'is_archived' => $request->is_archived,
 
 
             ]);
@@ -124,12 +121,13 @@ class PostsController extends Controller
             $validatePost = Validator::make(
                 $request->all(),
                 [
-                    'title' => 'required',
-                    'content' => 'required',
-                    'user_id' => 'required',
-                    'category_id' => 'required',
-                    'image_path' => 'nullable',
-                    'is_archived' => 'nullable',
+                    'title' => $request->title,
+                    'content' => $request->content,
+                    'user_id' => $request->user_id,
+                    'category_id' => $request->category_id,
+                    'image_path' => $request->image_path,
+                    'is_archived' => $request->is_archived,
+
                 ]
             );
 

@@ -7,9 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Rules\AnteriorToDate;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -20,23 +17,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-
-        foreach ($users as $user) {
-
-            $posts = DB::table('posts')->where('user_id', $user->id)->get();
-
-            // Add the posts to the user object
-            $user->posts = $posts;
-
-
-            $posts_count = DB::table('posts')->where('user_id', $user->id)->count();
-            $user->posts_count = $posts_count;
-            // Count the number of comments for the post
-            $comments_count = DB::table('comments')->where('user_id', $user->id)->count();
-            $user->comments_count = $comments_count;
-        }
-
-
 
         // On retourne les informations des utilisateurs en JSON
         return response()->json($users);
@@ -63,10 +43,8 @@ class UserController extends Controller
                     'firstname' => 'required',
                     'lastname' => 'required',
                     'email' => 'required|email|unique:users,email',
-                    'password' => ['required', 'min:8', 'regex:/[0-9]+/'],
-                    'is_admin' => 'required',
-                    'date_of_birth' => ['required', new AnteriorToDate],
-                    'avatar_path' => 'sometimes',
+                    'password' => 'required',
+                    'is_admin' => 'required'
                 ]
             );
 
@@ -84,9 +62,7 @@ class UserController extends Controller
                 'lastname' => $request->lastname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'is_admin' => $request->is_admin,
-                'date_of_birth' =>  $request->date_of_birth,
-                'avatar_path' =>  $request->avatar_path
+                'is_admin' => $request->is_admin
             ]);
 
             return response()->json([
@@ -128,16 +104,9 @@ class UserController extends Controller
                     'username' => 'required',
                     'firstname' => 'required',
                     'lastname' => 'required',
-                    'email' => [
-                        'required',
-                        'email',
-                        Rule::unique('users')->ignore($user->id),
-                    ],
-                    'password' => ['sometimes', 'min:8', 'regex:/[0-9]+/'],
-                    'is_admin' => 'required',
-                    'date_of_birth' => ['required', new AnteriorToDate],
-                    'avatar_path' => 'nullable',
-
+                    'email' => 'required|email|unique:users,email',
+                    'password' => 'required',
+                    'is_admin' => 'required'
                 ]
             );
 
@@ -149,17 +118,6 @@ class UserController extends Controller
                 ], 401);
             }
 
-            if (!empty($request->avatar_path)) {
-                $avatar_path = $request->avatar_path;
-            } else {
-                $avatar_path = $user->avatar_path;
-            }
-
-            if (!empty($request->password)) {
-                $password = Hash::make($request->password);
-            } else {
-                $password = $user->password;
-            }
 
             User::where('id', $user->id)->update([
 
@@ -167,10 +125,8 @@ class UserController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
-                'password' => $password,
+                'password' => $request->password,
                 'is_admin' => $request->is_admin,
-                'date_of_birth' =>  $request->date_of_birth,
-                'avatar_path' =>  $avatar_path
 
 
             ]);
