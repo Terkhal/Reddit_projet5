@@ -4,10 +4,16 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'vue-router'
 let cookieadmin = Cookies.get('useradmin');
 const router = useRouter()
+
 function verifyadmin(cookieadmin){
-if(cookieadmin == 0){
+    console.log('am i admin: ', cookieadmin )
+if(cookieadmin && cookieadmin == false){
     router.push('/')
 }    
+
+
+
+
 }
 verifyadmin(cookieadmin);
 </script>
