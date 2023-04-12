@@ -15,7 +15,8 @@ class Posts extends Model
         'user_id',
         'category_id',
         'image_path',
-        'is_archived'
+        'is_archived',
+
 
 
 

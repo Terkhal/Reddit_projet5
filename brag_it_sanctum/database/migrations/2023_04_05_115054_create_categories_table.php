@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('is_archived');
-            $table->string('banner');
+            $table->boolean('is_archived')->default(false);
+            $table->string('banner')->nullable();
             $table->timestamps();
         });
     }

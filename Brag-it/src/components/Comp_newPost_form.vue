@@ -15,9 +15,9 @@ function NewPost() {
             title: titles.value,
             content: contents.value,
             user_id: user_id.value,
-            category_id: category_id.vcalue,
-            image_path: image_path.value,
-            is_archived:  is_archived.value,
+            // category_id: category_id.vcalue,
+            // image_path: image_path.value,
+            // is_archived:  is_archived.value,
         })
     }) 
 
