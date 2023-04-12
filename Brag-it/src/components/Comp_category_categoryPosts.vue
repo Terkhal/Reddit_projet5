@@ -33,10 +33,12 @@ watch(() => route.params.category_id, () => {
 <Comp_home_topCateg/>   
 
 </div>
-<div> coucou la vue par categorie !!</div>
-        <div v-for="post in posts" :key="post.id">
+<div class="display_posts"> 
+        <div class="card_post" v-for="post in posts" :key="post.id">
+            <div> 
                 <!-- <div v-if="post.category_id == post.id"> -->
-                        title of the post: {{ post.title }} 
+                      <p>   title of the post: {{ post.title }} </p>
+                    </div>
             <!-- <RouterLink :to="'/categories/'+ $route.params.category_id" class="topCatLinks">  -->
 
                 <!-- <div v-if="$route.params.category_id == {{cat.id}}">  -->
@@ -46,4 +48,5 @@ watch(() => route.params.category_id, () => {
                 <!-- </RouterLink> -->
             </div>
             <!-- </div> -->
+        </div>
         </template>
