@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-import Dayjs from 'vue-dayjs';
+// import Dayjs from 'vue-dayjs';
 
 
 
@@ -34,13 +34,16 @@ fetch('http://127.0.0.1:8000/api/posts')
 
             <router-link :to="'/post/' + data.id">
                 <h2 class="post_title">{{ data.title }}</h2><!-- titre du post -->
-                <div class="post_content">
+            </router-link>
+            <div class="post_content">
+                
+                <router-link :to="'/post/' + data.id">
                     <p class="comment_text">{{ data.content }}</p>
+                </router-link>
                 </div>
                 <div v-if="data.comments_count == undefined">
                     <p> {{ data.comments_count }}</p>
                 </div>
-            </router-link>
 
         </div>
     </div>
