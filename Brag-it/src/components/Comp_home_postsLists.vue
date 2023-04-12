@@ -9,14 +9,17 @@ import { RouterLink } from "vue-router";
 let datas = ref([])
 fetch('http://127.0.0.1:8000/api/posts')
     .then(response => response.json())
-    .then(data => console.log(datas.value = data))
+    .then(data => {datas.value = data;
+                    console.log(datas.value);
+                })
 
-// let creationDate = data.created_at.format('DD/MM/YYYY'); 
-// dayjs.extend(relativeTime);
-// let date = new Date (datas.value.created_at)
-// let date = new Date (datas.value.created_at)
+function changeform (x){
+    let date = new Date(x);
+    return date.getDay() + "/" + date.getMonth() +"/"+ date.getFullYear()
+}
 
-// console.log(getDay(){date});
+console.log("le test est là",  datas)
+
 </script>
 
 <template>
@@ -29,11 +32,7 @@ fetch('http://127.0.0.1:8000/api/posts')
         <div class="card_post" v-for="data in datas" :key="data.id">
             <div>
                 <p class="post_user">{{ data.user_id }} </p>
-                <!-- <p class="post_date"> {{ data.created_at ('YYYY-MM-DD')  }}  </p> -->
-                <!-- <p class="post_date"> {{ date.getDay() + "/" + date.getMonth() +""+ date.getFullYear() }}  </p> -->
-                <!-- <p class="post_date"> {{ parseInt(date.getDay()) + "/" + date.getMonth() +""+ date.getFullYear() }}  </p> -->
-                <p class="post_date"> {{ data.created_at }}  </p>
-                <!-- <p class="post_date"> {{ date.getDay  }}  </p> -->
+                <p class="post_date"> {{ changeform(data.created_at) }}  </p>
             </div>
 
             <router-link :to="'/post/' + data.id">
