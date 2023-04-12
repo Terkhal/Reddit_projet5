@@ -24,16 +24,17 @@ let banner=ref("");
 //Post field
 
 let title=ref("");
-let content=ref("");
+let contentpost=ref("");
 let image_path=ref("");
+
 
 
 //Comment field
 
-let contentpost=ref("");
-let is_sub_com=ref("");
-let reply_to=ref("");
-let post_id=ref("");
+
+// let is_sub_com=ref("");
+// let reply_to=ref("");
+// let post_id=ref("");
 
 //SHARED value
 let user_id=cookieuserid;

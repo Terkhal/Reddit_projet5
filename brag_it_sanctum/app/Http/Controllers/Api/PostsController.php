@@ -124,13 +124,12 @@ class PostsController extends Controller
             $validatePost = Validator::make(
                 $request->all(),
                 [
-                    'title' => $request->title,
-                    'content' => $request->content,
-                    'user_id' => $request->user_id,
-                    'category_id' => $request->category_id,
-                    'image_path' => $request->image_path,
-                    'is_archived' => $request->is_archived,
-
+                    'title' => 'required',
+                    'content' => 'required',
+                    'user_id' => 'required',
+                    'category_id' => 'required',
+                    'image_path' => 'nullable',
+                    'is_archived' => 'nullable',
                 ]
             );
 

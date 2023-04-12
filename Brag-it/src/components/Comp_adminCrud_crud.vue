@@ -161,7 +161,6 @@ watch(() => route.params.crud, () => {
     </div>
     <!-- COMMENTS //////////////////////////////////////////////////////// -->
     <div class="crud" v-if="route.params.crud == 'comments'">
-        <button class="crudcreate" v-on:click="toggleforms('create')"> Create {{ route.params.crud }} </button>
         <p>{{ message }}</p>
         <table class="crudtable">
             <tr>
