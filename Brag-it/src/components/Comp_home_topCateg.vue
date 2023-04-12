@@ -3,7 +3,7 @@ import { ref } from 'vue';
 // import {useRoute} from "vue-router";
 
 
-////////////////////// get all categs:
+////////////////////// get all categories:
 
 const urlGetCateg = 'http://localhost:8000/api/categories'
 let categ = ref ([])
@@ -19,37 +19,6 @@ let categ = ref ([])
                 console.log("fetch get categ:", error)
             });
             // console.log(this.categId);   
-
- 
-///////////////////////////////// get all posts 
-
-
-// const urlGetPost = 'http://localhost:8000/api/posts'
-// let posts = ref ([])
-
-// fetch(urlGetPost)
-//         .then((response) => response.json())
-//         .then((post) => {
-//              console.log(post);
-//              posts.value = post
-//         })
-
-
-
-///////////////////////////// get all comments 
-
-//         const urlGetComment = 'http://localhost:8000/api/comments'
-//         let comments = ref ([])
-
-// fetch(urlGetComment)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             //  console.log(data);
-//              comments.value = data
-//         })
-
-//     // console.log('this are all com=>',comments)
-
 
 </script>
 

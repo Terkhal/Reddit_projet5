@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from "vue"
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+import Dayjs from 'vue-dayjs';
+
+
 
 //recuperation des posts avec un fetch
 let datas = ref([])
@@ -10,23 +14,36 @@ fetch('http://127.0.0.1:8000/api/posts')
 </script>
 
 <template>
+    <div class="display_posts">
 
-<div class="card" v-for="data in datas" :key="data.id">
-    <router-link :to="'/post/' + data.id">
-        <h3>{{ data.title }}</h3><!-- titre du post -->
-        <header>
-            <p class="date">{{data.user_id}}</p><!-- date de creation du post -->
-            <p class="user">{{ data.created_at }}</p><!-- nom du createur du post -->
-        </header>
-        <div class="content">
-            <p>{{ data.content }}</p><!-- le contenue du post -->
+        <RouterLink :to="'/newpost'">
+            
+                <input class="button_newPost" type="button" id="newPost" value="&#10133; Create a post">
+            
+        </RouterLink>
+
+
+        <div class="card_post" v-for="data in datas" :key="data.id">
+
+            <div>
+                <p class="post_user">{{ data.user_id }} </p>
+                <p class="post_date"> {{ data.created_at  }}  </p>
+            </div>
+
+            <!-- | dayjs('YYYY-MM-DD') -->
+
+            <router-link :to="'/post/' + data.id">
+                <h2 class="post_title">{{ data.title }}</h2><!-- titre du post -->
+                <div class="post_content">
+                    <p class="comment_text">{{ data.content }}</p>
+                </div>
+                <div v-if="data.comments_count == undefined">
+                    <p> {{ data.comments_count }}</p>
+                </div>
+            </router-link>
+
         </div>
-<!-- nombre de commentaire sur le post -->
-    </router-link>
-
-</div>
-
+    </div>
 </template>
 
-<style>
-</style>
+<style></style>

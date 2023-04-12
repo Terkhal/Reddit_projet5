@@ -1,6 +1,7 @@
 <script setup> 
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import Comp_home_topCateg from './Comp_home_topCateg.vue';
 
 const route = useRoute();
 const urlGetPostByCateg = "http://localhost:8000/api/posts/category/" ;
@@ -28,6 +29,10 @@ watch(() => route.params.category_id, () => {
 </script>
 <!-- http://localhost:8000/api/posts/category/1 -->
 <template> 
+<div>
+<Comp_home_topCateg/>   
+
+</div>
 <div> coucou la vue par categorie !!</div>
         <div v-for="post in posts" :key="post.id">
                 <!-- <div v-if="post.category_id == post.id"> -->
