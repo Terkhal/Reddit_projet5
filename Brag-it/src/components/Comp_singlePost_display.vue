@@ -19,6 +19,12 @@ fetch(url + postId)
         post.value = data;
     });
 
+
+    function changeform (x){
+    let date = new Date(x);
+    return date.getDay() + "/" + date.getMonth() +"/"+ date.getFullYear()
+}
+
 </script>   
 
 <template>
@@ -26,7 +32,7 @@ fetch(url + postId)
 <div class = "display_posts"> 
     <div class="card_post" v-if="post">
         <div>
-            <p class="post_date">{{ post.created_at }}</p>
+            <p class="post_date">{{ changeform(post.created_at) }}</p>
             <p class="post_user">{{ post.user_id }}</p>
         </div>
         <h2 class="post_title">{{ post.title }}</h2>
