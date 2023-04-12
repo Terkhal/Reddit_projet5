@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-dayjs": "^1.0.2"
+  }
+}
