@@ -1,10 +1,7 @@
 @import './base.css';
 @import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@300&display=swap');
 
-p,
-a,
-h1,
-h3 {
+p   a h1 h3 {
   color: var(--text-primary-color);
 }
 
