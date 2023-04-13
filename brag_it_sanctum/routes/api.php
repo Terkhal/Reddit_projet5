@@ -36,6 +36,8 @@ Route::get('comments/post/{post}', [commentsController::class, 'getComfromPost']
 Route::resource('posts', PostsController::class);
 // ->middleware('auth:sanctum');
 Route::get('posts/category/{category}', [PostsController::class, 'getPostfromCat']);
+
+Route::get('data', [DataController::class, 'alldatacount']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

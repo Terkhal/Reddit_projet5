@@ -1,6 +1,8 @@
 <script setup>
 
-// import Comp_singlePost_display from "@/components/Comp_singlePost_display.vue";
+import Comp_singlePost_display from "@/components/Comp_singlePost_display.vue";
+import comments from "./Comp_singlePost_comments.vue";
+
 
 import { ref } from "vue"
 import { useRoute } from "vue-router"
@@ -40,8 +42,11 @@ fetch(url + postId)
             <p> {{ post.content }} </p>
         </div>
     </div>
+    <comments :catid="post.category_id" />
 </div>
 
 
-    <a href="/"><input type="button" name="home" value="return to home" style="margin-top: 10px;" class="flatButton"></a>
+
+
+    
 </template>
