@@ -61,7 +61,7 @@ color: var(--text-primary-color);
   .post_user{
     font-style: italic;
     float:left;
-    text-decoration: underline ;  
+    text-decoration: none ;  
   }
 
   .post_date{
@@ -77,7 +77,6 @@ color: var(--text-primary-color);
     text-decoration: none;
     text-transform: capitalize;
     color: var(--text-primary-color);
-
 
   }
 
@@ -96,11 +95,13 @@ color: var(--text-primary-color);
     padding-left: 20px;
   }
   
-  .comment_text{
+  .post_content_text{
     color: var(--text-primary-color);
   }
 
-
+.comment_count{
+  float: right;
+}
 
   /* body {
     background-color:  #ffffff ; 
