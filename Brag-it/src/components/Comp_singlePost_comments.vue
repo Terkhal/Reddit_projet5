@@ -23,7 +23,7 @@ fetch(url + postId)
 
 <template>
     {{ contents }}
-    <div class="comment" v-for="comment in comments"  :key="comment.id">
+    <div class="display_posts" v-for="comment in comments"  :key="comment.id">
         <comment> {{ comment.content }} </comment>
         <comment> {{ comment.id }} </comment>
     </div>

@@ -46,9 +46,7 @@ function Creatcomment(){
 </script>
 
 <template>
-  
-    <div class="creatcomment">
-        
+    <div class="display_posts">
         <input type="text" name="content" v-model="content">
         <button v-on:click="Creatcomment">send</button>
     </div>
