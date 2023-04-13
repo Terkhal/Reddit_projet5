@@ -183,8 +183,31 @@ class PostsController extends Controller
 
     public function getPostfromCat(Categories $category)
     {
-        $categories = Posts::all()->where("category_id", $category->id);
-        return response()->json($categories);
+        $posts = Posts::all()->where("category_id", $category->id);
+       
+        foreach ($posts as $post) {
+            // Retrieve information about the category associated with the comment
+            $category_id = $post->category_id;
+            if ($category_id !== null) {
+                $category = DB::table('categories')->where('id', $category_id)->first();
+                $post->category = $category;
+            }
+
+            // Retrieve information about the user who made the comment
+            $user_id = $post->user_id;
+            if ($user_id !== null) {
+                $user = DB::table('users')->where('id', $user_id)->first();
+                $post->user = $user;
+            }
+
+
+            // Count the number of comments for the post
+            $comments_count = DB::table('comments')->where('post_id', $post->id)->count();
+            $post->comments_count = $comments_count;
+        }
+
+
+        return response()->json($posts);
     }
     
     public function getPostfromUser(User $user)
