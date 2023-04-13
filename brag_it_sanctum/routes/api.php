@@ -26,6 +26,8 @@ Route::get("/", [DataController::class, "allIn"]);
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
+Route::get('posts/user/{user}', [PostsController::class, 'getPostfromUser']);
+
 Route::resource('users', UserController::class);
 Route::resource('categories', CategoriesController::class);
 Route::resource('comments', commentsController::class);

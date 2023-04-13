@@ -8,11 +8,15 @@ const prop = defineProps({
 </script>
 
 <template>
+
 <div class="popup">
     <div class="popup-inner">
-        
+        <form class = "signup">
+
         <slot />
-        <button @click="togglepopup()">Cancel</button>
+        <button class="cancel" @click="togglepopup()">Cancel</button>
+
+    </form>
     </div>
 </div>
 

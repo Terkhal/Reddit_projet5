@@ -1,14 +1,18 @@
 <script setup>
 import {ref, onMounted} from 'vue';
 import loginpop from './Comp_home_loginpopup.vue';
+import signuppop from './Comp_signup_form.vue';
 import Cookies from 'js-cookie';
 
 const emit = defineEmits('isloggedin')
 let userlogname = ref('')
 let useradmin = ref('')
+let userid = ref('')
 const popup =ref({
   btrigger: false,
+  signup:false
 })
+
 let email = ref('');
 let password = ref('');
 
@@ -32,9 +36,12 @@ function isloggedin(){
 const userCookiename = Cookies.get('username');
 const tokenCookie = Cookies.get('token');
 const adminCookie = Cookies.get('useradmin');
+const idCookie = Cookies.get('userid');
+
 if (tokenCookie) {
   userlogname.value = userCookiename
   useradmin.value = adminCookie
+  userid.value = idCookie
   console.log('hello cookie', userCookiename);
   console.log('hello cookie', tokenCookie);
   console.log('the user is logged in');
@@ -119,36 +126,44 @@ const togglepop = (trigger) =>{
 
 <template>
 <div class="navbar">
-  <div v-if="!userlogname"><RouterLink :to="'/signup'">Signup</RouterLink></div>
+  <div v-if="!userlogname"> <button class = "signup-button" v-on:click="togglepop('signup')">  
+         Sign up
+      </button></div>
+      <signuppop v-if="popup.signup" :togglepopup="()=>togglepop('signup')" />
   <div v-if="!userlogname" >
-       <button class="login" v-on:click="togglepop('btrigger')">  
+       <button class = "signup-button" v-on:click="togglepop('btrigger')">  
          Login
       </button>
       <loginpop v-if="popup.btrigger" :togglepopup="()=>togglepop('btrigger')">
-        <h2>sign in</h2>
+      
+        <h1>Sign In Form</h1>
+        
         <div>
-          <div> <p>Email</p>
-        <input type="text" v-model="email"> 
+        <span class = "signup-span">Email</span><br>
+        <input class = "signup-input" type="text"
+        v-model="email" placeholder="Enter your email"> 
         </div>
-        <div> <p>Password</p>
-        <input type="password" v-model="password">
+        <div> 
+        <span class = "signup-span">Password</span><br>
+        <input class = "signup-input" type="password"
+        v-model="password" placeholder="Enter your password">
         </div>
-        </div>
-        <button @click="connectUser"  v-on:click.="togglepop('btrigger')" >Connect</button>
+        <button class="confirm" @click="connectUser"  
+        v-on:click.prevent="togglepop('btrigger')">Connect</button>
       </loginpop>
+     
   </div>
 
 
-
-  <div class="dropdown"  v-if="userlogname">
+  <div class="dropdown" v-if="userlogname">
       <button class="dropbtn">  
-        <h3>Hello {{ userlogname }}  ⌄
+        <h3>Hello {{ userlogname }} ⌄
         </h3>
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       <RouterLink  v-if="useradmin == 1" :to="'/admin'"> Admin </RouterLink>   
-      <RouterLink :to="'/user/{{user_id}}'"> Profile </RouterLink> 
+      <RouterLink :to="'/user/' + userid"> Profile </RouterLink>
       <RouterLink :to="'/'" @click="logout"> Logout </RouterLink> 
     </div>
   </div>
