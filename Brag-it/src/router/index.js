@@ -7,7 +7,9 @@ import signup from '../views/View_signup.vue'
 import admin from '../views/View_admin.vue'
 import adminCrud from '../views/View_adminCrud.vue'
 import profile from '../views/View_profile.vue'
-
+import categVue from '../components/Comp_category_categoryPosts.vue';
+ 
+ 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,9 +29,9 @@ const router = createRouter({
       component: newPost
     },
     {
-      path: '/category/:category_id/post:post_id',
+      path: '/category/:category_id',
       name: 'category',
-      component: category
+      component: category,categVue
     },
     {
       path: '/sign_up',

@@ -18,7 +18,6 @@ function verify(value){
 <div class="container-center">
 
   <header>
-  
   <div class="logo"></div>
   <div class="bar-search">
   <div class="logo-search"></div>
@@ -36,7 +35,6 @@ function verify(value){
   <RouterView />
 
 
-   
 
 
 </body>

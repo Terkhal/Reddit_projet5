@@ -89,8 +89,6 @@ class CategoriesController extends Controller
     }
 
     /**
-
-
   
      * Update the specified resource in storage.
      */
