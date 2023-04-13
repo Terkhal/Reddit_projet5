@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 
 class CategoriesController extends Controller
@@ -18,6 +19,14 @@ class CategoriesController extends Controller
     {
         $categories = Categories::all();
 
+        foreach ($categories as $category) {
+
+            $posts_count = DB::table('posts')->where('category_id', $category->id)->count();
+            $category->posts_count = $posts_count;
+            // Count the number of comments for the post
+            $comments_count = DB::table('comments')->where('category_id', $category->id)->count();
+            $category->comments_count = $comments_count;
+        }
         // On retourne les informations des utilisateurs en JSON
         return response()->json($categories);
     }
@@ -35,11 +44,14 @@ class CategoriesController extends Controller
                 $request->all(),
                 [
                     'name' => 'required',
-                    'is_archived' => 'required',
-                    'banner' => 'required',
+                    'banner' => 'nullable',
+                    'is_archived' => 'nullable',
 
                 ]
             );
+
+            $banner = $request->filled('banner') ? $request->input('banner') : 'default_banner.jpg';
+            $isArchived = $request->filled('is_archived') ? $request->input('is_archived') : false;
 
             if ($validateCat->fails()) {
                 return response()->json([
@@ -51,8 +63,8 @@ class CategoriesController extends Controller
 
             Categories::create([
                 'name' => $request->name,
-                'is_archived' => $request->is_archived,
-                'banner' => $request->banner,
+                'is_archived' => $isArchived,
+                'banner' => $banner,
 
             ]);
 
@@ -77,8 +89,6 @@ class CategoriesController extends Controller
     }
 
     /**
-
-
   
      * Update the specified resource in storage.
      */
