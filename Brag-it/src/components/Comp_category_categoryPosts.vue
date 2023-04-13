@@ -24,6 +24,8 @@ function changeform (x){
     let date = new Date(x);
     return date.getDay() + "/" + date.getMonth() +"/"+ date.getFullYear()
 }
+
+
 </script>
 <!-- http://localhost:8000/api/posts/category/1 -->
 <template> 
@@ -32,24 +34,19 @@ function changeform (x){
 </div>
 <div class="display_posts"> 
         <div class="card_post" v-for="post in posts" :key="post.id">
-            <div> 
-                <!-- <div v-if="post.category_id == post.id"> -->
-                      <p class="post_user"> {{ post.user_id }} </p>
+            <div v-if= "post.user !== undefined " >
+                      <p class="post_user"> {{ post.user.username }} </p>
                       <p class="post_date"> {{ changeform(post.created_at) }}  </p>
+            </div>
                       <router-link :to="'/post/' + post.id">
                 <h2 class="post_title">{{ post.title }}</h2>
                 <div class="post_content">
-                    <p class="comment_text">{{ post.content }}</p>
+                    <p class="post_content_text">{{ post.content }}</p>
                 </div>
             </router-link>
+            <router-link :to="'/post/' + post.id">
+        <p class="comment_count"> Comment section : {{ post.comments_count }}  &#128172;</p>
+    </router-link> 
                     </div>
-            <!-- <RouterLink :to="'/categories/'+ $route.params.category_id" class="topCatLinks">  -->
-                <!-- <div v-if="$route.params.category_id == {{cat.id}}">  -->
-                    <!-- <div class="topCatTable_catTitle"> Category {{ cat.id }} <br>  -->
-                    <!-- </div>  -->
-                <!-- </div> -->
-                <!-- </RouterLink> -->
             </div>
-            <!-- </div> -->
-        </div>
         </template>

@@ -31,22 +31,20 @@ console.log("le test est là",  datas)
 
         <div class="card_post" v-for="data in datas" :key="data.id">
             <div>
-                <p class="post_user">{{ data.user_id }} </p>
+                <p class="post_user">{{ data.user.username }} </p>
                 <p class="post_date"> {{ changeform(data.created_at) }}  </p>
             </div>
 
             <router-link :to="'/post/' + data.id">
                 <h2 class="post_title">{{ data.title }}</h2>
                 <div class="post_content">
-                    <p class="comment_text">{{ data.content }}</p>
+                    <p class="post_content_text">  {{ data.content }} </p>
                 </div>
-            </router-link>
-                <div v-if="data.comments_count == undefined">
-                    <p> {{ data.comments_count }} </p>
-                </div>
-
+            </router-link>  
+            <router-link :to="'/post/' + data.id">
+                    <p class="comment_count"> Comment section : {{ data.comments_count }}  &#128172;</p>
+                </router-link>  
         </div>
     </div>
 </template>
 
-<style></style>
