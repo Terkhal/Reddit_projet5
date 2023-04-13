@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Rules\AnteriorToDate;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -19,6 +20,23 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+
+        foreach ($users as $user) {
+
+            $posts = DB::table('posts')->where('user_id', $user->id)->get();
+
+            // Add the posts to the user object
+            $user->posts = $posts;
+
+
+            $posts_count = DB::table('posts')->where('user_id', $user->id)->count();
+            $user->posts_count = $posts_count;
+            // Count the number of comments for the post
+            $comments_count = DB::table('comments')->where('user_id', $user->id)->count();
+            $user->comments_count = $comments_count;
+        }
+
+
 
         // On retourne les informations des utilisateurs en JSON
         return response()->json($users);

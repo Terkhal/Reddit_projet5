@@ -53,7 +53,7 @@ class AuthController extends Controller
                 'date_of_birth' =>  $request->date_of_birth,
                 'avatar_path' =>  $request->avatar_path
             ]);
-            //return from api
+
             return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',

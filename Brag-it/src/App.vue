@@ -2,6 +2,7 @@
 /* import View_home from './views/View_home.vue'; */
 import ThemeButton from "@/components/ThemeButton.vue";
 import Comp_app_login from "@/components/Comp_app_login.vue";
+import { RouterLink } from "vue-router";
 import {ref, onMounted} from 'vue';
 
 let toggledisplay = ref(false)
@@ -14,7 +15,11 @@ function verify(value){
 <div class="container-center">
 
   <header>
-  <div class="logo"></div>
+    <div>
+    <RouterLink to="/">
+      <div class="logo"></div>
+    </RouterLink>
+  </div>
   <div class="bar-search">
   <div class="logo-search"></div>
   <input class="bar-search-input" type="text" v-model="search" placeholder="Search..."/>
@@ -22,7 +27,6 @@ function verify(value){
 </div>
   <Comp_app_login @isloggedin="verify"/>
   <theme-button/>
-
   </header>
 
 <!-- <body v-if="toggledisplay"> -->

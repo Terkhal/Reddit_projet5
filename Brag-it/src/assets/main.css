@@ -178,6 +178,10 @@ position: sticky
 }
 
 /* Navbar container */
+
+.fixnav {
+  position: fixed;
+}
 .navbar {
   padding-right: 0%;
   display: flex;

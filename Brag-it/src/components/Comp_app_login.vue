@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 const emit = defineEmits('isloggedin')
 let userlogname = ref('')
 let useradmin = ref('')
+let userid = ref('')
 const popup =ref({
   btrigger: false,
   signup:false
@@ -35,9 +36,12 @@ function isloggedin(){
 const userCookiename = Cookies.get('username');
 const tokenCookie = Cookies.get('token');
 const adminCookie = Cookies.get('useradmin');
+const idCookie = Cookies.get('userid');
+
 if (tokenCookie) {
   userlogname.value = userCookiename
   useradmin.value = adminCookie
+  userid.value = idCookie
   console.log('hello cookie', userCookiename);
   console.log('hello cookie', tokenCookie);
   console.log('the user is logged in');
@@ -153,13 +157,13 @@ const togglepop = (trigger) =>{
 
   <div class="dropdown" v-if="userlogname">
       <button class="dropbtn">  
-        <h3>Hello {{ userlogname }}  ⌄
+        <h3>Hello {{ userlogname }} {{ userid }} ⌄
         </h3>
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       <RouterLink  v-if="useradmin == 1" :to="'/admin'"> Admin </RouterLink>   
-      <RouterLink :to="'/user/{{user_id}}'"> Profile </RouterLink> 
+      <RouterLink :to="'/user/' + userid"> Profile </RouterLink>
       <RouterLink :to="'/'" @click="logout"> Logout </RouterLink> 
     </div>
   </div>
