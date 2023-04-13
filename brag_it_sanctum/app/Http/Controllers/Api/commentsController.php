@@ -42,6 +42,8 @@ class commentsController extends Controller
                     'user_id' => 'required',
                     'is_sub_com' => 'required',
                     'reply_to' => 'required',
+                    'post_id'  => 'required',
+                    'category_id'  => 'required',
 
 
 
@@ -63,6 +65,9 @@ class commentsController extends Controller
                 'user_id' => $request->user_id,
                 'is_sub_com' => $request->is_sub_com,
                 'reply_to' => $request->reply_to,
+                'post_id' => $request->post_id,
+                'category_id' => $request->category_id,
+
 
             ]);
 

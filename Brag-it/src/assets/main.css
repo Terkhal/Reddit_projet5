@@ -41,7 +41,7 @@ background-color: var(--background-color-secondary);
   flex-direction: column;
   }
 
-  .button_newPost{
+  ._newPostbutton{
 margin-left: 80px;
 border: 4px double #cccccc; 
 border-radius: 10px; 

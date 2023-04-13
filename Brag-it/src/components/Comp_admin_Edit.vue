@@ -236,8 +236,7 @@ function editUser(username,firstname,lastname,password,email,avatar_path,date_of
 
  }
 
- content.content, content.user_id, content.category_id, content.post_id, content.is_sub_com,content.reply_to, content.is_archived
- 
+//COMMENTS//////////////////////////////////////////// 
  function editCom(contentcom,user_id,category_id,post_id,is_sub_com,reply_to,archived) {
     console.log('content =>', contentcom)
     console.log('is_sub_com =>', is_sub_com)

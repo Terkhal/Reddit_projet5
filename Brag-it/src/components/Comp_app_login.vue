@@ -32,6 +32,8 @@ function isloggedin(){
 const userCookiename = Cookies.get('username');
 const tokenCookie = Cookies.get('token');
 const adminCookie = Cookies.get('useradmin');
+const useridCookie = Cookies.get('userid');
+
 if (tokenCookie) {
   userlogname.value = userCookiename
   useradmin.value = adminCookie
@@ -74,7 +76,11 @@ function connectUser(){
   console.log('this will be my cookie', data.user)
      Cookies.set('userid', data.user.id, { expires: 7 });
      Cookies.set('username', data.user.username, { expires: 7 });
-     Cookies.set('useradmin', data.user.is_admin, { expires: 7 });
+     console.log('useradminbeforecookie',data.user.is_admin )
+     Cookies.set('useradmin', data.user.is_admin, { 
+      expires: 7, 
+  
+    });
     Cookies.set('token', data.token, { expires: 7 });
 	 console.log("return: ",data.user, { expires: 7});
  
