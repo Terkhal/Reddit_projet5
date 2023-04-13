@@ -41,7 +41,7 @@ gofetchdata()
     <h1 v-if="stat.posts  !== undefined">Posts:<span class="value"> {{ stat.posts }}</span></h1>
     <h1 v-if="stat.categories  !== undefined">Categories:<span class="value"> {{ stat.categories }}</span></h1>
     <h1 v-if="stat.comments  !== undefined">Comments:<span class="value">{{ stat.comments }}</span></h1>
-</div>h1
+</div>
 
 </div>
 </template>
