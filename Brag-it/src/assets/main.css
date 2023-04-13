@@ -556,7 +556,9 @@ dark theme
   border-radius: 5px;
 }
 
-
+.edit-profile {
+  text-align: left;
+}
 
 /* #app {
   max-width: 1280px;

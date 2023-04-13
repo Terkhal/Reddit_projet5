@@ -7,7 +7,7 @@ import admin from '../views/View_admin.vue'
 import adminCrud from '../views/View_adminCrud.vue'
 import profile from '../views/View_profile.vue'
 
-import Profile from '../components/Comp_profile_infos.vue';
+
 import categVue from '../components/Comp_category_categoryPosts.vue';
  
  
@@ -47,7 +47,7 @@ const router = createRouter({
     {
       path: '/user/:user_id',
       name: 'profile',
-      component: profile,Profile
+      component: profile
     }
   ]
 })

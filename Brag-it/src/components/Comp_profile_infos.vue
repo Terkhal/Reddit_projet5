@@ -1,10 +1,12 @@
 <script setup>
   import Cookies from 'js-cookie';
   import { ref, onMounted } from 'vue'
-  import { useRoute } from 'vue-router';
+  import { useRoute,useRouter } from 'vue-router';
       
-  const route = useRoute()
+  const route = useRoute();
+  const router = useRouter();
   const user = ref({})
+
   
     const fetchUser = () => {
     
@@ -39,52 +41,35 @@
     onMounted(() => {
       fetchUser()
     })
-    
-    const currCookie = Cookies.get('userid');
+
+  const currCookie = Cookies.get('userid');
 
     if (route.params.user_id != currCookie) {
-      //   useRoute.push({ path: '/' })
-      console.log("HEEELLLOOOO");
-      
+    router.push('/');
     }
-
 </script>
 
 <template>
-{{ route.params.user_id }}
-{{ currCookie }}
-    <div>
-      <form @submit.prevent="saveUser">
-        <label>
-          Firstame:
-          <input v-model="user.firstname" type="text" />
-        </label>
-        <br>
-        <label>
-          Lastname:
-          <input v-model="user.lastname" type="text" />
-        </label>
-        <br>
-        <label>
-          Username:
-          <input v-model="user.username" type="text" />
-        </label>
-        <br>
-        <label>
-          Email:
-          <input v-model="user.email" type="email" />
-        </label>
-        <br>
-        <label>
-          Password:
-          <input v-model="user.password" type="text" />
-        </label>
-        <br>
 
-        <button type="submit">Save</button>
+    <div>
+      <h1>Edit your profile</h1>
+      <form class = "edit-profile" @submit.prevent="saveUser">
+        <span class = "signup-span">Firstname:</span>
+        <input class = "signup-input" v-model="user.firstname" type="text" />
+        <br>
+        <span class = "signup-span">Lastname:</span>
+        <input class = "signup-input" v-model="user.lastname" type="text" />
+        <br>
+        <span class = "signup-span">Username:</span>
+        <input class = "signup-input" v-model="user.username" type="text" />
+        <br>
+        <span class = "signup-span">Email:</span>
+        <input class = "signup-input" v-model="user.email" type="email" />
+        <br>
+        <span class = "signup-span">Password:</span>
+        <input class = "signup-input" v-model="user.password" type="text" />
+        <br>
+        <button class="confirm" type="submit">Save</button>
       </form>
     </div>
   </template>
-  
-  
-  

@@ -6,6 +6,7 @@ use App\Models\Posts;
 use App\Models\Comments;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -185,4 +186,11 @@ class PostsController extends Controller
         $categories = Posts::all()->where("category_id", $category->id);
         return response()->json($categories);
     }
+
+    public function getPostfromUser(User $user)
+    {
+        $posts = Posts::all()->where("user_id", $user->id);
+        return response()->json($posts);
+    }
 }
+

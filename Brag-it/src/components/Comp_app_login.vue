@@ -157,7 +157,7 @@ const togglepop = (trigger) =>{
 
   <div class="dropdown" v-if="userlogname">
       <button class="dropbtn">  
-        <h3>Hello {{ userlogname }} {{ userid }} ⌄
+        <h3>Hello {{ userlogname }} ⌄
         </h3>
       <i class="fa fa-caret-down"></i>
     </button>

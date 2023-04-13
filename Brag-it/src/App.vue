@@ -29,8 +29,7 @@ function verify(value){
   <theme-button/>
   </header>
 
-<!-- <body v-if="toggledisplay"> -->
-  <body>
+<body v-if="toggledisplay">
 
     <!-- <View_home/> -->
   <RouterView/>
