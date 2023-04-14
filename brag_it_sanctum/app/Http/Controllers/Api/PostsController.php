@@ -177,14 +177,14 @@ class PostsController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Category deleted Successfully',
+            'message' => 'Post deleted Successfully',
         ], 200);
     }
 
     public function getPostfromCat(Categories $category)
     {
         $posts = Posts::all()->where("category_id", $category->id);
-       
+
         foreach ($posts as $post) {
             // Retrieve information about the category associated with the comment
             $category_id = $post->category_id;
@@ -209,7 +209,7 @@ class PostsController extends Controller
 
         return response()->json($posts);
     }
-    
+
     public function getPostfromUser(User $user)
     {
         $posts = Posts::all()->where("user_id", $user->id);

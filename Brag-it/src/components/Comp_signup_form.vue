@@ -58,9 +58,9 @@ const prop = defineProps({
 	return Promise.reject(await response.json());
 
 }).then ((data) => {
-
+ 
 console.log("feedback: ",data);
-
+prop.togglepopup();
 }).catch((error) => {
   console.log('my errors => ',error);
   const validationErrors = error.errors;

@@ -189,10 +189,10 @@ watch(() => route.params.crud, () => {
             <tr v-for="(unit, index) in filteredCrud" :key="index">
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px;">{{ unit.title }}</td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px;">{{ unit.content }}</td>
-                <td v-if="unit.category !== undefined">{{ unit.category.name }}</td>
+                <td >{{ unit.category?.name }}</td>
                 <td v-if="unit.comments_count !== undefined">{{ unit.comments_count }}</td>
                 <td>{{ unit.is_archived }}</td>
-                <td v-if="unit.user !== undefined">{{ unit.user.username }}</td>
+                <td >{{ unit.user?.username }}</td>
                 <td><button class="admin_edit" v-on:click="toggleforms('edit',unit.id, route.params.crud, unit.title)">Edit</button>
                 </td>
                 <td><button class="admin_delete" v-on:click="toggleforms('delete',unit.id, route.params.crud, unit.title)">X</button> 
@@ -218,9 +218,9 @@ watch(() => route.params.crud, () => {
             <tr v-for="(unit, index) in filteredCrud" :key="index">
                 <td>{{ unit.id }}</td>
                 <td>{{ unit.content }}</td>
-                <td v-if="unit.post !== undefined">{{ unit.post.title }}</td>
-                <td v-if="unit.category !== undefined">{{ unit.category.name }}</td>
-                <td v-if="unit.user !== undefined">{{ unit.user.username }}</td>
+                <td >{{ unit.post?.title }}</td>
+                <td >{{ unit.category?.name }}</td>
+                <td>{{ unit.user?.username }}</td>
                 <td>{{ unit.reply_to }}</td>
                 <td><button class="admin_edit" v-on:click="toggleforms('edit',unit.id, route.params.crud, unit.title)">Edit</button>
                 </td>

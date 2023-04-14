@@ -3,6 +3,7 @@ import adminmenu from '../components/Comp_admin_menu.vue'
 import Cookies from 'js-cookie';
 import { useRouter } from 'vue-router'
 import index from '../components/Comp_admin_stat.vue'
+
 let cookieadmin = Cookies.get('useradmin');
 const router = useRouter()
 
@@ -23,7 +24,7 @@ verifyadmin(cookieadmin);
     <adminmenu />
     <div  style="display: block;width: -webkit-fill-available;">
     <index />
-            <!-- chartjs will be here -->
+       
 
 </div>
 </div>

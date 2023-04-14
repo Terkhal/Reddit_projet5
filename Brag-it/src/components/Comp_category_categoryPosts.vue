@@ -61,7 +61,7 @@ getName(route.params.category_id);
 
             <div class="card_post" v-for="post in posts" :key="post.id">
                 <div v-if="post.user !== undefined">
-                    <p class="post_user"> {{ post.user.username }} </p>
+                    <p class="post_user"> {{ post.user?.username }} </p>
                     <p class="post_date"> {{ changeform(post.created_at) }} </p>
                 </div>
                 <router-link :to="'/post/' + post.id">

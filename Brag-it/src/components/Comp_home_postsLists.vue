@@ -31,7 +31,7 @@ console.log("le test est là",  datas)
 
         <div class="card_post" v-for="data in datas" :key="data.id">
             <div>
-                <p class="post_user">{{ data.user.username }} </p>
+                <p class="post_user" >{{ data.user?.username }} </p>
                 <p class="post_date"> {{ changeform(data.created_at) }}  </p>
             </div>
 
@@ -42,7 +42,7 @@ console.log("le test est là",  datas)
                 </div>
             </router-link>  
             <router-link :to="'/post/' + data.id">
-                    <p class="comment_count"> Comment section : {{ data.comments_count }}  &#128172;</p>
+                    <p class="comment_count">  {{ data.comments_count }} Comments &#128172;</p>
                 </router-link>  
         </div>
     </div>

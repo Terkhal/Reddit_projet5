@@ -37,7 +37,7 @@ fecthcom();
   
     <div class="card_post"  v-for="comment in comments"  :key="comment.id">
         <p> {{ comment.content }} </p>   
-        <p> {{ user_id }} </p>   
+        
         <Comp_singlePost_delete_comments v-if="user_id == comment.user_id" :comid="comment.id" @refreshcom="fecthcom"/>
     </div>
     <Comp_singlepost_form_comments :Id="postId" :catidform="catid" @refreshcom="fecthcom"/>

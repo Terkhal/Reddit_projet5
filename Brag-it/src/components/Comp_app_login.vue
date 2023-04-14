@@ -3,6 +3,7 @@ import {ref, onMounted} from 'vue';
 import loginpop from './Comp_home_loginpopup.vue';
 import signuppop from './Comp_signup_form.vue';
 import Cookies from 'js-cookie';
+import { propsToAttrMap } from '@vue/shared';
 
 const emit = defineEmits('isloggedin')
 let userlogname = ref('')
@@ -91,6 +92,7 @@ function connectUser(){
  
    const userCookiename = Cookies.get('username');
    const tokenCookie = Cookies.get('token');
+  
 if (tokenCookie) {
   isloggedin()
 } else {
@@ -152,7 +154,7 @@ const togglepop = (trigger) =>{
         <input class = "signup-input" type="password"
         v-model="password" placeholder="Enter your password">
         </div>
-        <button class="confirm" @click="connectUser"  
+        <button class="confirm" @click.prevent="connectUser"  
         v-on:click.prevent="togglepop('btrigger')">Connect</button>
       </loginpop>
      
